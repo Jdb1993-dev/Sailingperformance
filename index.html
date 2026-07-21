@@ -9,6 +9,7 @@
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="icons/icon.svg" />
 <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
   <header>
@@ -82,10 +83,13 @@
 
         <section class="settings-section">
           <h3>Startlijn</h3>
-          <p class="hint">Vaar naar elk uiteinde van de startlijn en pin daar het punt. De afstand en time-to-burn worden berekend op basis van je huidige koers en snelheid.</p>
+          <p class="hint">Pin een punt op je huidige GPS-positie, of kies A en B op de kaart. De afstand en time-to-burn worden berekend op basis van je huidige koers en snelheid.</p>
           <div class="row">
             <button id="pinABtn">Pin punt A</button>
             <button id="pinBBtn">Pin punt B</button>
+          </div>
+          <div class="row">
+            <button id="chooseOnMapBtn">Kies op kaart&hellip;</button>
             <button id="clearLineBtn" class="secondary">Wis lijn</button>
           </div>
           <div class="row" id="pinStatusRow">
@@ -126,6 +130,24 @@
           <button id="saveTimerBtn">Opslaan</button>
           <button id="clearTimerBtn" class="secondary">Wissen</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="mapModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Startlijn op kaart</h2>
+        <button id="closeMapModalBtn" aria-label="Sluiten">&times;</button>
+      </div>
+      <div class="row">
+        <button id="mapSetABtn" class="map-mode-btn">Punt A plaatsen</button>
+        <button id="mapSetBBtn" class="map-mode-btn">Punt B plaatsen</button>
+      </div>
+      <div id="mapContainer" class="map-container"></div>
+      <p class="hint">Tik op de kaart om het geselecteerde punt te plaatsen, of sleep een pin om 'm bij te stellen.</p>
+      <div class="row">
+        <button id="mapDoneBtn">Klaar</button>
       </div>
     </div>
   </div>
@@ -183,6 +205,7 @@
     </div>
   </div>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="polar.js"></script>
   <script src="app.js"></script>
 </body>

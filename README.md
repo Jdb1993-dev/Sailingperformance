@@ -64,7 +64,7 @@ Werkt met het standaard ORC Club Certificate-sjabloon; bij een sterk afwijkende 
 Tweede scherm (swipe of tik op de dot onderin):
 
 - **Timer**: tik op de klok om een starttijd (uu:mm:ss, vandaag) in te stellen. Groot: minuten:seconden tot die tijd. Rechtsboven klein: de ingestelde tijd zelf. Wordt onthouden voor de rest van de dag (localStorage), maar niet meegenomen naar de volgende dag.
-- **Startlijn**: "Pin punt A" en "Pin punt B" leggen de twee uiteinden van de startlijn vast op je huidige GPS-positie (bv. bij de pin-boei en het startschip langsvaren). Zodra beide gezet zijn:
+- **Startlijn**: "Pin punt A" en "Pin punt B" leggen de twee uiteinden van de startlijn vast op je huidige GPS-positie (bv. bij de pin-boei en het startschip langsvaren). Of tik op **"Kies op kaart..."** om A en B aan te wijzen op een kaart (Leaflet + OpenStreetMap, gratis en zonder API-key — dus geen Google Maps nodig) — handig als je de lijn al vooraf kent. Beide manieren zijn te combineren, en pinnen zijn achteraf te verslepen op de kaart om ze bij te stellen. Zodra beide gezet zijn:
   - **Afstand tot lijn**: de afstand (in meters) tot het punt waar je *huidige koers* de startlijn kruist — niet de kortste (loodrechte) afstand.
   - **Time to burn**: `(tijd tot start) - (afstand / huidige snelheid)`. Positief (groen) = je bent te vroeg, moet nog tijd doden. Negatief (rood) = je bent te laat, moet opschieten.
   - Als je koers de lijn niet snijdt (weg van de lijn, of evenwijdig), of het kruispunt ligt buiten de twee gepinde punten (het verlengde van de lijn), toont de app dat expliciet i.p.v. een misleidend getal.

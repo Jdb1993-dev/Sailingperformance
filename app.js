@@ -21,6 +21,11 @@ let raceTargetTimeStr = loadRaceTarget(); // "HH:MM:SS" of null
 let raceLine = loadRaceLine(); // {a: {lat,lon}|null, b: {lat,lon}|null}
 let waypoints = []; // alle boeien uit waypoints.gpx: {name, lat, lon}
 let selectedWaypoint = loadSelectedWaypoint(); // {name, lat, lon}|null
+let lineMap = null; // Leaflet map-instantie voor de startlijn-kiezer (lazy aangemaakt)
+let lineMarkerA = null;
+let lineMarkerB = null;
+let lineMapLayer = null; // polyline tussen A en B
+let mapActiveMarker = "a"; // welk punt de volgende tik op de kaart plaatst
 
 const el = (id) => document.getElementById(id);
 
@@ -172,6 +177,88 @@ function loadRaceLine() {
 }
 function saveRaceLine() {
   localStorage.setItem(LINE_STORAGE_KEY, JSON.stringify(raceLine));
+}
+
+// --- Startlijn op kaart (Leaflet + OpenStreetMap) ---
+
+function lineMarkerIcon(which) {
+  return L.divIcon({
+    className: `map-pin map-pin-${which}`,
+    html: which.toUpperCase(),
+    iconSize: [24, 24],
+  });
+}
+
+function initLineMapIfNeeded() {
+  if (lineMap) return;
+  lineMap = L.map("mapContainer");
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: "&copy; OpenStreetMap-bijdragers",
+  }).addTo(lineMap);
+  lineMap.on("click", (e) => setLinePointFromMap(mapActiveMarker, e.latlng.lat, e.latlng.lng));
+}
+
+// Houdt de markers/lijn op de kaart in sync met raceLine, ongeacht of die via GPS-pin,
+// tik-op-de-kaart of het verslepen van een marker is bijgewerkt.
+function syncLineMap() {
+  if (!lineMap) return;
+
+  ["a", "b"].forEach((which) => {
+    const pt = raceLine[which];
+    const marker = which === "a" ? lineMarkerA : lineMarkerB;
+    if (pt && !marker) {
+      const newMarker = L.marker([pt.lat, pt.lon], { draggable: true, icon: lineMarkerIcon(which) }).addTo(lineMap);
+      newMarker.on("dragend", (e) => {
+        const ll = e.target.getLatLng();
+        setLinePointFromMap(which, ll.lat, ll.lng);
+      });
+      if (which === "a") lineMarkerA = newMarker;
+      else lineMarkerB = newMarker;
+    } else if (pt && marker) {
+      marker.setLatLng([pt.lat, pt.lon]);
+    } else if (!pt && marker) {
+      lineMap.removeLayer(marker);
+      if (which === "a") lineMarkerA = null;
+      else lineMarkerB = null;
+    }
+  });
+
+  if (lineMapLayer) {
+    lineMap.removeLayer(lineMapLayer);
+    lineMapLayer = null;
+  }
+  if (raceLine.a && raceLine.b) {
+    lineMapLayer = L.polyline(
+      [
+        [raceLine.a.lat, raceLine.a.lon],
+        [raceLine.b.lat, raceLine.b.lon],
+      ],
+      { color: "#4aa3ff" }
+    ).addTo(lineMap);
+  }
+
+  if (!lineMarkerA && !lineMarkerB) {
+    const center = lastFix || { lat: 52.6, lon: 5.2 };
+    lineMap.setView([center.lat, center.lon], lastFix ? 13 : 8);
+  }
+}
+
+function setLinePointFromMap(which, lat, lon) {
+  raceLine[which] = { lat, lon };
+  saveRaceLine();
+  syncLineMap();
+  renderRaceScreen();
+  // Na het plaatsen van A automatisch naar B schakelen, zodat je vlot beide punten kan zetten.
+  if (which === "a" && !raceLine.b) {
+    mapActiveMarker = "b";
+    updateMapModeButtons();
+  }
+}
+
+function updateMapModeButtons() {
+  el("mapSetABtn").classList.toggle("active", mapActiveMarker === "a");
+  el("mapSetBBtn").classList.toggle("active", mapActiveMarker === "b");
 }
 
 function getRaceTargetMs() {
@@ -661,6 +748,7 @@ el("pinABtn").addEventListener("click", () => {
   }
   raceLine.a = { lat: lastFix.lat, lon: lastFix.lon };
   saveRaceLine();
+  syncLineMap();
   renderRaceScreen();
 });
 el("pinBBtn").addEventListener("click", () => {
@@ -670,12 +758,38 @@ el("pinBBtn").addEventListener("click", () => {
   }
   raceLine.b = { lat: lastFix.lat, lon: lastFix.lon };
   saveRaceLine();
+  syncLineMap();
   renderRaceScreen();
 });
 el("clearLineBtn").addEventListener("click", () => {
   raceLine = { a: null, b: null };
   saveRaceLine();
+  syncLineMap();
   renderRaceScreen();
+});
+
+el("chooseOnMapBtn").addEventListener("click", () => {
+  mapActiveMarker = !raceLine.a ? "a" : !raceLine.b ? "b" : "a";
+  updateMapModeButtons();
+  el("mapModal").classList.remove("hidden");
+  initLineMapIfNeeded();
+  setTimeout(() => {
+    lineMap.invalidateSize();
+    syncLineMap();
+  }, 50);
+});
+el("mapSetABtn").addEventListener("click", () => {
+  mapActiveMarker = "a";
+  updateMapModeButtons();
+});
+el("mapSetBBtn").addEventListener("click", () => {
+  mapActiveMarker = "b";
+  updateMapModeButtons();
+});
+el("mapDoneBtn").addEventListener("click", () => el("mapModal").classList.add("hidden"));
+el("closeMapModalBtn").addEventListener("click", () => el("mapModal").classList.add("hidden"));
+el("mapModal").addEventListener("click", (e) => {
+  if (e.target.id === "mapModal") el("mapModal").classList.add("hidden");
 });
 
 // --- Swipe-indicator tussen de schermen ---
