@@ -192,15 +192,12 @@ function lineMarkerIcon(which) {
 function initLineMapIfNeeded() {
   if (lineMap) return;
   lineMap = L.map("mapContainer");
-  // CARTO's basemap-tegels i.p.v. OSM's eigen tile.openstreetmap.org: die laatste zijn
-  // volgens hun eigen policy niet bedoeld voor gebruik in apps/productie (alleen licht
-  // testgebruik), en bleken op sommige netwerken/providers geblokkeerd te worden terwijl
-  // een directe navigatie naar dezelfde tegel-URL wel gewoon werkte.
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-    maxZoom: 20,
-    subdomains: "abcd",
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-bijdragers &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  // Esri's gratis satellietbeelden (geen API-key nodig). Let op de tegel-volgorde
+  // {z}/{y}/{x} - dat is bij Esri's ArcGIS REST tile-service andersom dan bij de
+  // meeste andere providers ({z}/{x}/{y}).
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+    maxZoom: 19,
+    attribution: "Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community",
   }).addTo(lineMap);
   lineMap.on("click", (e) => setLinePointFromMap(mapActiveMarker, e.latlng.lat, e.latlng.lng));
 }
