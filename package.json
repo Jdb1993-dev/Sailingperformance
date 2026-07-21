@@ -1,0 +1,17 @@
+{
+  "name": "sailingperformance",
+  "version": "1.0.0",
+  "description": "Performance-app voor zeilboten: vergelijkt GPS-snelheid met polar-target snelheid, wind live van actuelewind.nl. Standaard polar: Piranha (MG 26).",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@thednp/dommatrix": "^3.0.4",
+    "pdf-parse": "^2.4.5"
+  }
+}

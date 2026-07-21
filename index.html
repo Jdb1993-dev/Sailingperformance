@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0b1e33" />
+<title>Sailing Performance</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="icons/icon.svg" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Piranha (MG 26)</h1>
+    <button id="settingsBtn" aria-label="Instellingen">&#9881;</button>
+  </header>
+
+  <main>
+    <section class="perf-card">
+      <div class="perf-value" id="perfValue">--%</div>
+      <div class="perf-label">performance t.o.v. polar</div>
+      <div class="perf-bar-track"><div class="perf-bar-fill" id="perfBarFill"></div></div>
+    </section>
+
+    <section class="grid">
+      <div class="tile">
+        <div class="tile-label">Snelheid (GPS)</div>
+        <div class="tile-value" id="sogValue">-- kn</div>
+      </div>
+      <div class="tile">
+        <div class="tile-label">Target (polar)</div>
+        <div class="tile-value" id="targetValue">-- kn</div>
+      </div>
+      <div class="tile">
+        <div class="tile-label">Koers (COG)</div>
+        <div class="tile-value" id="cogValue">--&deg;</div>
+      </div>
+      <div class="tile">
+        <div class="tile-label">TWA</div>
+        <div class="tile-value" id="twaValue">--&deg;</div>
+      </div>
+      <div class="tile">
+        <div class="tile-label">Wind (TWS)</div>
+        <div class="tile-value" id="twsValue">-- kn</div>
+      </div>
+      <div class="tile">
+        <div class="tile-label">Windrichting</div>
+        <div class="tile-value" id="twdValue">--&deg;</div>
+      </div>
+    </section>
+
+    <section class="status" id="statusBox">
+      <span id="gpsStatus">GPS: wachten...</span>
+      <span id="windStatus">Wind: wachten...</span>
+    </section>
+  </main>
+
+  <div id="settingsModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Instellingen</h2>
+        <button id="closeSettingsBtn" aria-label="Sluiten">&times;</button>
+      </div>
+
+      <div class="settings-section">
+        <h3>Wind spot</h3>
+        <p class="hint">actuelewind.nl &ndash; elke minuut vernieuwd. Standaard: Trintelhaven Houtribdijk.</p>
+        <select id="windSpotSelect"></select>
+        <label class="row">
+          <input type="checkbox" id="manualWindToggle" />
+          Handmatige wind invoer (bv. bij geen bereik)
+        </label>
+        <div id="manualWindFields" class="hidden">
+          <label>Windsnelheid (kn): <input type="number" id="manualTws" step="0.1" min="0" /></label>
+          <label>Windrichting (&deg;, waar wind vandaan komt): <input type="number" id="manualTwd" step="1" min="0" max="359" /></label>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <h3>Polar diagram (target snelheid in kn)</h3>
+        <p class="hint">Standaard: Piranha (MG 26), overgenomen uit het officiele ORC-certificaat. Upload je eigen ORC-certificaat (PDF) voor de polar van jouw schip, of pas de tabel handmatig aan.</p>
+        <div class="row">
+          <label class="upload-btn" for="orcUploadInput">
+            ORC-certificaat (PDF) uploaden&hellip;
+            <input type="file" id="orcUploadInput" accept="application/pdf" hidden />
+          </label>
+        </div>
+        <p class="hint" id="orcUploadStatus"></p>
+        <div class="table-wrap">
+          <table id="polarTable"></table>
+        </div>
+        <div class="row">
+          <button id="savePolarBtn">Opslaan</button>
+          <button id="resetPolarBtn" class="secondary">Terug naar schatting</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="polar.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

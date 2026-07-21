@@ -1,0 +1,138 @@
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #0b1e33;
+  color: #eaf2fb;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: #08182b;
+  border-bottom: 1px solid #14304f;
+}
+header h1 { font-size: 1.1rem; margin: 0; font-weight: 600; letter-spacing: 0.02em; }
+#settingsBtn {
+  background: none; border: none; color: #eaf2fb; font-size: 1.5rem; cursor: pointer; line-height: 1;
+  padding: 4px 8px;
+}
+
+main { padding: 16px; max-width: 480px; margin: 0 auto; }
+
+.perf-card {
+  text-align: center;
+  background: #102944;
+  border-radius: 16px;
+  padding: 24px 16px 20px;
+  margin-bottom: 16px;
+}
+.perf-value { font-size: 4.5rem; font-weight: 700; line-height: 1; }
+.perf-label { color: #8fb0d1; margin-top: 4px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.perf-bar-track {
+  margin-top: 16px;
+  height: 10px;
+  border-radius: 6px;
+  background: #1b3a5c;
+  overflow: hidden;
+}
+.perf-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: #e74c3c;
+  transition: width 0.4s ease, background-color 0.4s ease;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.tile {
+  background: #102944;
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.tile-label { color: #8fb0d1; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.tile-value { font-size: 1.6rem; font-weight: 600; margin-top: 2px; }
+
+.status {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #8fb0d1;
+  padding: 4px 4px 24px;
+}
+.status .warn { color: #f5b942; }
+.status .error { color: #e74c3c; }
+
+.modal {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+  display: flex; align-items: flex-end; justify-content: center;
+  z-index: 50;
+}
+.modal.hidden { display: none; }
+.modal-content {
+  background: #102944;
+  width: 100%;
+  max-width: 480px;
+  max-height: 88vh;
+  overflow-y: auto;
+  border-radius: 16px 16px 0 0;
+  padding: 16px;
+}
+.modal-header { display: flex; justify-content: space-between; align-items: center; }
+.modal-header h2 { margin: 0; font-size: 1.2rem; }
+#closeSettingsBtn { background: none; border: none; color: #eaf2fb; font-size: 1.6rem; cursor: pointer; }
+
+.settings-section { margin-top: 18px; }
+.settings-section h3 { margin: 0 0 6px; font-size: 1rem; }
+.hint { color: #8fb0d1; font-size: 0.8rem; margin: 0 0 10px; }
+.row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+label.row { cursor: pointer; }
+#manualWindFields { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+#manualWindFields.hidden { display: none; }
+#manualWindFields label { font-size: 0.85rem; display: flex; justify-content: space-between; gap: 8px; }
+input[type="number"] {
+  background: #08182b; border: 1px solid #1b3a5c; color: #eaf2fb;
+  border-radius: 6px; padding: 6px 8px; width: 90px; font-size: 0.95rem;
+}
+
+select {
+  background: #08182b; border: 1px solid #1b3a5c; color: #eaf2fb;
+  border-radius: 6px; padding: 8px 10px; width: 100%; font-size: 0.95rem; margin-top: 4px;
+}
+
+.upload-btn {
+  display: inline-block; background: #1b3a5c; color: #eaf2fb;
+  border-radius: 8px; padding: 10px 16px; font-size: 0.9rem; cursor: pointer;
+}
+#orcUploadStatus:empty { display: none; }
+#orcUploadStatus.error { color: #e74c3c; }
+#orcUploadStatus.success { color: #3cc26e; }
+
+.table-wrap { overflow-x: auto; }
+table#polarTable { border-collapse: collapse; width: 100%; font-size: 0.8rem; }
+table#polarTable th, table#polarTable td {
+  border: 1px solid #1b3a5c; padding: 4px; text-align: center;
+}
+table#polarTable th { background: #0d2138; font-weight: 500; }
+table#polarTable input {
+  width: 44px; background: transparent; border: none; color: #eaf2fb; text-align: center; font-size: 0.8rem;
+  -moz-appearance: textfield;
+}
+table#polarTable input::-webkit-outer-spin-button,
+table#polarTable input::-webkit-inner-spin-button {
+  -webkit-appearance: none; margin: 0;
+}
+
+button {
+  background: #2f7ac1; color: #fff; border: none; border-radius: 8px;
+  padding: 10px 16px; font-size: 0.9rem; cursor: pointer;
+}
+button.secondary { background: #1b3a5c; }
