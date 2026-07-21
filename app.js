@@ -192,6 +192,23 @@ function lineMarkerIcon(which) {
 function initLineMapIfNeeded() {
   if (lineMap) return;
   lineMap = L.map("mapContainer");
+
+  // Altijd meteen een geldig middelpunt/zoom zetten, nog vóórdat er markers bijkomen.
+  // Zonder dit blijft de kaart zonder view staan als raceLine al gevuld is (bv. na een
+  // page-refresh met een eerder opgeslagen lijn) - Leaflet laadt dan geen enkele tegel.
+  if (raceLine.a && raceLine.b) {
+    lineMap.fitBounds(
+      [
+        [raceLine.a.lat, raceLine.a.lon],
+        [raceLine.b.lat, raceLine.b.lon],
+      ],
+      { padding: [40, 40] }
+    );
+  } else {
+    const center = raceLine.a || raceLine.b || lastFix || { lat: 52.6, lon: 5.2 };
+    lineMap.setView([center.lat, center.lon], raceLine.a || raceLine.b || lastFix ? 14 : 8);
+  }
+
   // Esri's gratis satellietbeelden (geen API-key nodig). Let op de tegel-volgorde
   // {z}/{y}/{x} - dat is bij Esri's ArcGIS REST tile-service andersom dan bij de
   // meeste andere providers ({z}/{x}/{y}).
@@ -239,11 +256,6 @@ function syncLineMap() {
       ],
       { color: "#4aa3ff" }
     ).addTo(lineMap);
-  }
-
-  if (!lineMarkerA && !lineMarkerB) {
-    const center = lastFix || { lat: 52.6, lon: 5.2 };
-    lineMap.setView([center.lat, center.lon], lastFix ? 13 : 8);
   }
 }
 
