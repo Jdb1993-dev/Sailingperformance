@@ -7,6 +7,7 @@ const TIMER_STORAGE_KEY = "sailing-race-target-v1";
 const LINE_STORAGE_KEY = "sailing-startline-v1";
 const WAYPOINT_STORAGE_KEY = "sailing-waypoint-v1";
 const NM_IN_METERS = 1852;
+const WAYPOINT_LIST_MAX = 200; // voorkomt duizenden DOM-nodes bij een landelijk GPX-bestand
 
 let polar = loadPolar();
 let manualWind = null; // {tws, twd} when manual override active
@@ -110,14 +111,22 @@ async function loadWaypoints() {
 function renderWaypointList(filterText) {
   const listEl = el("waypointList");
   const f = (filterText || "").trim().toLowerCase();
-  const filtered = f ? waypoints.filter((wp) => wp.name.toLowerCase().includes(f)) : waypoints;
-
   listEl.innerHTML = "";
+
+  // Bij een landelijk bestand (10.000+ boeien) niet alles ongefilterd in de DOM proppen -
+  // dat is traag op een telefoon. Pas zoeken laat de lijst zien.
+  if (!f && waypoints.length > WAYPOINT_LIST_MAX) {
+    listEl.innerHTML = `<div class="waypoint-empty">${waypoints.length} boeien beschikbaar &mdash; typ een naam om te zoeken.</div>`;
+    return;
+  }
+
+  const filtered = f ? waypoints.filter((wp) => wp.name.toLowerCase().includes(f)) : waypoints;
   if (!filtered.length) {
     listEl.innerHTML = '<div class="waypoint-empty">Geen boei gevonden.</div>';
     return;
   }
-  filtered.forEach((wp) => {
+
+  filtered.slice(0, WAYPOINT_LIST_MAX).forEach((wp) => {
     const item = document.createElement("div");
     item.className = "waypoint-item";
     item.textContent = wp.name;
@@ -130,6 +139,13 @@ function renderWaypointList(filterText) {
     });
     listEl.appendChild(item);
   });
+
+  if (filtered.length > WAYPOINT_LIST_MAX) {
+    const more = document.createElement("div");
+    more.className = "waypoint-empty";
+    more.textContent = `+${filtered.length - WAYPOINT_LIST_MAX} meer resultaten - verfijn je zoekopdracht.`;
+    listEl.appendChild(more);
+  }
 }
 
 async function openWaypointPicker() {

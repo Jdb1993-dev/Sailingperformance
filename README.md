@@ -74,7 +74,7 @@ Tegel-provider: Esri's gratis `World_Imagery` (satelliet, geen API-key). Eerder 
 
 ## Course to steer / distance to waypoint
 
-Op het eerste scherm: tik op de boei-kaart (onder de performance-tegel) om een boei te selecteren. De lijst komt uit `waypoints.gpx` (in de project-root, wordt client-side gelezen en geparsed met `DOMParser` — geen server nodig) en is doorzoekbaar op naam. Zodra een boei gekozen is:
+Op het eerste scherm: tik op de boei-kaart (onder de performance-tegel) om een boei te selecteren. De lijst komt uit `waypoints.gpx` (in de project-root, wordt client-side gelezen en geparsed met `DOMParser` — geen server nodig) en is doorzoekbaar op naam. Momenteel de landelijke Nautin-export (12.000+ boeien/tonnen, ~3,9MB); bij meer dan 200 boeien toont de picker pas een lijst zodra je begint te typen (en capt op 200 resultaten), zodat een telefoon niet duizenden DOM-elementen in één keer moet opbouwen. Zodra een boei gekozen is:
 
 - **Course to steer**: rechte kompaskoers (bearing) van je huidige GPS-positie naar de boei.
 - **Distance to WP**: afstand in zeemijl, rechte lijn (geen rekening met stroming/leeway of een tussenliggende route).
