@@ -733,6 +733,7 @@ if (selectedWaypoint) {
 
 el("timerCard").addEventListener("click", () => {
   el("timerTargetInput").value = raceTargetTimeStr || "";
+  el("timerCountdownInput").value = "";
   el("timerModal").classList.remove("hidden");
 });
 el("closeTimerModalBtn").addEventListener("click", () => el("timerModal").classList.add("hidden"));
@@ -752,6 +753,18 @@ el("saveTimerBtn").addEventListener("click", () => {
 el("clearTimerBtn").addEventListener("click", () => {
   raceTargetTimeStr = null;
   clearRaceTarget();
+  el("timerModal").classList.add("hidden");
+  renderRaceScreen();
+});
+
+el("startCountdownBtn").addEventListener("click", () => {
+  const minutes = parseFloat(el("timerCountdownInput").value);
+  if (!minutes || minutes <= 0) return;
+  const target = new Date(Date.now() + minutes * 60_000);
+  raceTargetTimeStr = [target.getHours(), target.getMinutes(), target.getSeconds()]
+    .map((n) => String(n).padStart(2, "0"))
+    .join(":");
+  saveRaceTarget(raceTargetTimeStr);
   el("timerModal").classList.add("hidden");
   renderRaceScreen();
 });
