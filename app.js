@@ -772,11 +772,18 @@ el("chooseOnMapBtn").addEventListener("click", () => {
   mapActiveMarker = !raceLine.a ? "a" : !raceLine.b ? "b" : "a";
   updateMapModeButtons();
   el("mapModal").classList.remove("hidden");
-  initLineMapIfNeeded();
+  // De modal gaat van display:none naar zichtbaar; de container heeft op dit exacte
+  // moment nog niet altijd een correcte layout-grootte (vooral op mobiel), waardoor
+  // Leaflet met een verkeerde (0x0) afmeting initialiseert en geen tegels laadt.
+  // Twee keer invalidateSize() met wat marge dekt zowel snelle als tragere apparaten.
   setTimeout(() => {
+    initLineMapIfNeeded();
     lineMap.invalidateSize();
     syncLineMap();
-  }, 50);
+  }, 100);
+  setTimeout(() => {
+    if (lineMap) lineMap.invalidateSize();
+  }, 400);
 });
 el("mapSetABtn").addEventListener("click", () => {
   mapActiveMarker = "a";
