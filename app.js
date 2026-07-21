@@ -192,9 +192,15 @@ function lineMarkerIcon(which) {
 function initLineMapIfNeeded() {
   if (lineMap) return;
   lineMap = L.map("mapContainer");
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
-    attribution: "&copy; OpenStreetMap-bijdragers",
+  // CARTO's basemap-tegels i.p.v. OSM's eigen tile.openstreetmap.org: die laatste zijn
+  // volgens hun eigen policy niet bedoeld voor gebruik in apps/productie (alleen licht
+  // testgebruik), en bleken op sommige netwerken/providers geblokkeerd te worden terwijl
+  // een directe navigatie naar dezelfde tegel-URL wel gewoon werkte.
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+    maxZoom: 20,
+    subdomains: "abcd",
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-bijdragers &copy; <a href="https://carto.com/attributions">CARTO</a>',
   }).addTo(lineMap);
   lineMap.on("click", (e) => setLinePointFromMap(mapActiveMarker, e.latlng.lat, e.latlng.lng));
 }
