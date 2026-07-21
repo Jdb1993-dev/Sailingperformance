@@ -67,6 +67,29 @@ header h1 { font-size: 1.1rem; margin: 0; font-weight: 600; letter-spacing: 0.02
 .timer-value.done { color: #e74c3c; }
 .timer-hint { color: #8fb0d1; margin-top: 8px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
 
+.waypoint-card {
+  text-align: center;
+  background: #102944;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+.waypoint-name { font-size: 1.3rem; font-weight: 600; }
+.waypoint-hint { color: #8fb0d1; margin-top: 2px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+#waypointSearchInput {
+  width: 100%; margin-top: 4px;
+  background: #08182b; border: 1px solid #1b3a5c; color: #eaf2fb;
+  border-radius: 6px; padding: 8px 10px; font-size: 0.95rem;
+}
+.waypoint-list { margin-top: 12px; max-height: 55vh; overflow-y: auto; }
+.waypoint-item {
+  padding: 10px 8px; border-bottom: 1px solid #1b3a5c; font-size: 0.95rem; cursor: pointer;
+}
+.waypoint-item:hover, .waypoint-item:active { background: #16385c; }
+.waypoint-empty { color: #8fb0d1; padding: 10px 8px; font-size: 0.9rem; }
+
 .pin-status { font-size: 0.8rem; color: #8fb0d1; }
 .pin-status.set { color: #3cc26e; }
 

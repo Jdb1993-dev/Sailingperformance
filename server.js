@@ -20,6 +20,7 @@ const ALLOWED_FILES = new Set([
   "manifest.json",
   "sw.js",
   "icons/icon.svg",
+  "waypoints.gpx",
 ]);
 
 const MIME_TYPES = {
@@ -30,6 +31,7 @@ const MIME_TYPES = {
   ".svg": "image/svg+xml",
   ".png": "image/png",
   ".ico": "image/x-icon",
+  ".gpx": "application/gpx+xml",
 };
 
 function serveStatic(req, res) {

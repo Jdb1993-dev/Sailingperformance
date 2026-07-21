@@ -7,6 +7,7 @@ Webapp (PWA) die op je telefoon laat zien hoe goed een zeilboot het doet t.o.v. 
 - **Polar diagram**: standaard de **Piranha (MG 26, NED 1926)**, overgenomen uit het officiele ORC Club Certificate. Upload je eigen **ORC-certificaat (PDF)** in Instellingen voor de polar van jouw eigen schip. Ook handmatig volledig aanpasbaar.
 - **Performance %**: 2-seconden-gemiddelde GPS-snelheid gedeeld door de target-snelheid uit de polar voor de actuele TWA/TWS (koers/snelheid worden gemiddeld om GPS-ruis te dempen).
 - **Racetimer + startlijn**: swipe naar het tweede scherm voor een aftel-klok naar een instelbare starttijd, en een startlijn-tool (twee gepinde punten) die de afstand tot de lijn op je huidige koers en de "time to burn" (hoeveel tijd je te veel/te weinig hebt om precies op tijd op de lijn te zijn) berekent.
+- **Course to steer / Distance to waypoint**: tik op de boei-kaart (eerste scherm) om een boei te zoeken en selecteren uit `waypoints.gpx`. Toont de kompaskoers en afstand (nm) in rechte lijn naar die boei.
 
 ## Waarom een server nodig is
 
@@ -68,6 +69,15 @@ Tweede scherm (swipe of tik op de dot onderin):
   - **Time to burn**: `(tijd tot start) - (afstand / huidige snelheid)`. Positief (groen) = je bent te vroeg, moet nog tijd doden. Negatief (rood) = je bent te laat, moet opschieten.
   - Als je koers de lijn niet snijdt (weg van de lijn, of evenwijdig), of het kruispunt ligt buiten de twee gepinde punten (het verlengde van de lijn), toont de app dat expliciet i.p.v. een misleidend getal.
   - Geometrie: lat/lon worden lokaal plat geprojecteerd (meters, nauwkeurig genoeg over lijn-/aanloopafstanden) voor de lijn-kruising-berekening in `app.js` (`localXY`/`computeLineCrossing`).
+
+## Course to steer / distance to waypoint
+
+Op het eerste scherm: tik op de boei-kaart (onder de performance-tegel) om een boei te selecteren. De lijst komt uit `waypoints.gpx` (in de project-root, wordt client-side gelezen en geparsed met `DOMParser` — geen server nodig) en is doorzoekbaar op naam. Zodra een boei gekozen is:
+
+- **Course to steer**: rechte kompaskoers (bearing) van je huidige GPS-positie naar de boei.
+- **Distance to WP**: afstand in zeemijl, rechte lijn (geen rekening met stroming/leeway of een tussenliggende route).
+
+De keuze wordt onthouden (localStorage). Vervang `waypoints.gpx` door je eigen export (bv. uit OpenCPN/Nautin) om een andere boeienset te gebruiken — elk `<wpt>` met een `<name>` en `lat`/`lon` wordt herkend.
 
 ## Beperkingen om te weten
 

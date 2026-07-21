@@ -5,6 +5,8 @@ const DEFAULT_STATION_CODE = "6258"; // Trintelhaven Houtribdijk
 const SPOT_STORAGE_KEY = "sailing-wind-spot-v1";
 const TIMER_STORAGE_KEY = "sailing-race-target-v1";
 const LINE_STORAGE_KEY = "sailing-startline-v1";
+const WAYPOINT_STORAGE_KEY = "sailing-waypoint-v1";
+const NM_IN_METERS = 1852;
 
 let polar = loadPolar();
 let manualWind = null; // {tws, twd} when manual override active
@@ -17,6 +19,8 @@ let lastSpeedKn = null; // 2s gemiddelde snelheid, gebruikt voor weergave en per
 let fixBuffer = []; // recente {time, speedKn, courseDeg} samples, voor het 2s voortschrijdend gemiddelde
 let raceTargetTimeStr = loadRaceTarget(); // "HH:MM:SS" of null
 let raceLine = loadRaceLine(); // {a: {lat,lon}|null, b: {lat,lon}|null}
+let waypoints = []; // alle boeien uit waypoints.gpx: {name, lat, lon}
+let selectedWaypoint = loadSelectedWaypoint(); // {name, lat, lon}|null
 
 const el = (id) => document.getElementById(id);
 
@@ -57,6 +61,83 @@ function circularMeanDeg(anglesDeg) {
     sumCos += Math.cos(toRad(a));
   });
   return (toDeg(Math.atan2(sumSin, sumCos)) + 360) % 360;
+}
+
+// --- Boei / waypoint (course to steer, distance to waypoint) ---
+
+function loadSelectedWaypoint() {
+  try {
+    const raw = localStorage.getItem(WAYPOINT_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+function saveSelectedWaypoint(wp) {
+  if (wp) localStorage.setItem(WAYPOINT_STORAGE_KEY, JSON.stringify(wp));
+  else localStorage.removeItem(WAYPOINT_STORAGE_KEY);
+}
+
+// Leest waypoints.gpx (eenmalig, client-side) en geeft [{name, lat, lon}, ...] terug.
+// Het bestand is ISO-8859-1 gecodeerd (zoals opgegeven in de XML-declaratie), vandaar de
+// expliciete TextDecoder in plaats van fetch().text() (die altijd UTF-8 aanneemt).
+async function loadWaypoints() {
+  if (waypoints.length) return waypoints;
+  const res = await fetch("waypoints.gpx");
+  const buf = await res.arrayBuffer();
+  const text = new TextDecoder("iso-8859-1").decode(buf);
+  const doc = new DOMParser().parseFromString(text, "application/xml");
+  waypoints = Array.from(doc.querySelectorAll("wpt"))
+    .map((node) => {
+      const nameEl = node.querySelector("name");
+      const rawName = nameEl ? nameEl.textContent : "";
+      return {
+        name: rawName.split("\n")[0].trim(),
+        lat: parseFloat(node.getAttribute("lat")),
+        lon: parseFloat(node.getAttribute("lon")),
+      };
+    })
+    .filter((wp) => wp.name && !Number.isNaN(wp.lat) && !Number.isNaN(wp.lon));
+  waypoints.sort((a, b) => a.name.localeCompare(b.name));
+  return waypoints;
+}
+
+function renderWaypointList(filterText) {
+  const listEl = el("waypointList");
+  const f = (filterText || "").trim().toLowerCase();
+  const filtered = f ? waypoints.filter((wp) => wp.name.toLowerCase().includes(f)) : waypoints;
+
+  listEl.innerHTML = "";
+  if (!filtered.length) {
+    listEl.innerHTML = '<div class="waypoint-empty">Geen boei gevonden.</div>';
+    return;
+  }
+  filtered.forEach((wp) => {
+    const item = document.createElement("div");
+    item.className = "waypoint-item";
+    item.textContent = wp.name;
+    item.addEventListener("click", () => {
+      selectedWaypoint = wp;
+      saveSelectedWaypoint(wp);
+      el("waypointName").textContent = wp.name;
+      el("waypointModal").classList.add("hidden");
+      render();
+    });
+    listEl.appendChild(item);
+  });
+}
+
+async function openWaypointPicker() {
+  el("waypointModal").classList.remove("hidden");
+  el("waypointSearchInput").value = "";
+  el("waypointList").innerHTML = '<div class="waypoint-empty">Boeien laden...</div>';
+  try {
+    await loadWaypoints();
+    renderWaypointList("");
+    el("waypointSearchInput").focus();
+  } catch (err) {
+    el("waypointList").innerHTML = '<div class="waypoint-empty">Kon waypoints.gpx niet laden.</div>';
+  }
 }
 
 // --- Racetimer + startlijn: opslag ---
@@ -326,6 +407,16 @@ function render() {
   el("sogValue").textContent = lastSpeedKn != null ? lastSpeedKn.toFixed(1) + " kn" : "-- kn";
   el("cogValue").textContent = lastCourseDeg != null ? Math.round(lastCourseDeg) + "°" : "--°";
 
+  if (selectedWaypoint && lastFix) {
+    const distM = haversineMeters(lastFix.lat, lastFix.lon, selectedWaypoint.lat, selectedWaypoint.lon);
+    const cts = bearingDeg(lastFix.lat, lastFix.lon, selectedWaypoint.lat, selectedWaypoint.lon);
+    el("ctsValue").textContent = Math.round(cts) + "°";
+    el("dtwValue").textContent = (distM / NM_IN_METERS).toFixed(2) + " nm";
+  } else {
+    el("ctsValue").textContent = "--°";
+    el("dtwValue").textContent = "-- nm";
+  }
+
   if (lastWind) {
     el("twsValue").textContent = lastWind.speedKn.toFixed(1) + " kn";
     el("twdValue").textContent = Math.round(lastWind.dirDeg) + "°" + (lastWind.dirText ? " " + lastWind.dirText : "");
@@ -522,6 +613,19 @@ el("manualTwd").addEventListener("input", (e) => {
   manualWind.twd = parseFloat(e.target.value) || 0;
   pollWind();
 });
+
+// --- Boei / waypoint: bediening ---
+
+el("waypointCard").addEventListener("click", openWaypointPicker);
+el("closeWaypointModalBtn").addEventListener("click", () => el("waypointModal").classList.add("hidden"));
+el("waypointModal").addEventListener("click", (e) => {
+  if (e.target.id === "waypointModal") el("waypointModal").classList.add("hidden");
+});
+el("waypointSearchInput").addEventListener("input", (e) => renderWaypointList(e.target.value));
+
+if (selectedWaypoint) {
+  el("waypointName").textContent = selectedWaypoint.name;
+}
 
 // --- Racetimer + startlijn: bediening ---
 

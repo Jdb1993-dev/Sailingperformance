@@ -25,6 +25,11 @@
           <div class="perf-bar-track"><div class="perf-bar-fill" id="perfBarFill"></div></div>
         </section>
 
+        <section class="waypoint-card" id="waypointCard">
+          <div class="waypoint-name" id="waypointName">Kies boei&hellip;</div>
+          <div class="waypoint-hint">tik om een boei te selecteren</div>
+        </section>
+
         <section class="grid">
           <div class="tile">
             <div class="tile-label">Snelheid (GPS)</div>
@@ -49,6 +54,14 @@
           <div class="tile">
             <div class="tile-label">Windrichting</div>
             <div class="tile-value" id="twdValue">--&deg;</div>
+          </div>
+          <div class="tile">
+            <div class="tile-label">Course to steer</div>
+            <div class="tile-value" id="ctsValue">--&deg;</div>
+          </div>
+          <div class="tile">
+            <div class="tile-label">Distance to WP</div>
+            <div class="tile-value" id="dtwValue">-- nm</div>
           </div>
         </section>
 
@@ -114,6 +127,17 @@
           <button id="clearTimerBtn" class="secondary">Wissen</button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div id="waypointModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Boei selecteren</h2>
+        <button id="closeWaypointModalBtn" aria-label="Sluiten">&times;</button>
+      </div>
+      <input type="text" id="waypointSearchInput" placeholder="Zoek op naam..." />
+      <div class="waypoint-list" id="waypointList"></div>
     </div>
   </div>
 

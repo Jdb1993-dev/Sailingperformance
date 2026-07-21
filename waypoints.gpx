@@ -1,0 +1,1556 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes" ?>
+<gpx
+ version="1.1"
+ creator="Nautin (op basis van RWS en BSH) - https://www.nautin.nl/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns="http://www.topografix.com/GPX/1/1"
+ xmlns:opencpn="http://www.opencpn.org"
+ xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+<metadata>
+<name>Voorbeeld.gpx</name>
+<time>2026-07-21T17:58:44Z</time>
+<keywords></keywords>
+</metadata>
+<wpt lat="52.71332222" lon="5.30025278">
+<name>ED-Kite H</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>f5a5f75e-f4b6-5267-b629-af4bbe0e5164</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.71166944" lon="5.29896944">
+<name>ED-Kite I</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>1ae1c28c-530e-5fe6-868f-5f660f8a7c21</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.70992222" lon="5.29758056">
+<name>ED-Kite J</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>ec9399b5-cb07-54b3-a55f-8860e2b65c30</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.71903056" lon="5.28883056">
+<name>EH-Kite A</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>12731590-00a5-556f-887e-679bad6e84f4</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.71503056" lon="5.30152222">
+<name>EH-Kite G</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>1d244387-be05-567e-8796-cc64130bf6e2</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.75291944" lon="5.44414167">
+<name>EL A
+Iso.8s</name>
+<sym>217</sym>
+<cmt>rood/wit repeterend # Lichtkarakter: Iso.8s</cmt>
+<desc>rood/wit repeterend # Lichtkarakter: Iso.8s</desc>
+<extensions>
+<opencpn:guid>8c491d9d-45f1-5249-9f93-68fc80a3d966</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.76240556" lon="5.518375">
+<name>EL B
+LFl.10s</name>
+<sym>217</sym>
+<cmt>rood/wit repeterend # Lichtkarakter: LFl.10s</cmt>
+<desc>rood/wit repeterend # Lichtkarakter: LFl.10s</desc>
+<extensions>
+<opencpn:guid>db088a0a-df73-5aea-90d0-771be6ef1ed7</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.65516389" lon="5.54239167">
+<name>EZ 1
+LFl.G.10s</name>
+<sym>149</sym>
+<cmt>groen # Lichtkarakter: LFl.G.10s</cmt>
+<desc>groen # Lichtkarakter: LFl.G.10s</desc>
+<extensions>
+<opencpn:guid>7e2c0e38-e1df-56f2-a52d-c799c40c93d0</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.582688333333" lon="5.4892616666667">
+<name>EZ 11
+Iso.G.8s</name>
+<sym>064</sym>
+<cmt>groen # Lichtkarakter: Iso.G.8s</cmt>
+<desc>groen # Lichtkarakter: Iso.G.8s</desc>
+<extensions>
+<opencpn:guid>45e6b8cc-021d-5b3f-ac6d-7899bc4f06f8</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.562408333333" lon="5.4714966666667">
+<name>EZ 12
+Iso.R.4s</name>
+<sym>017</sym>
+<cmt>rood # Lichtkarakter: Iso.R.4s</cmt>
+<desc>rood # Lichtkarakter: Iso.R.4s</desc>
+<extensions>
+<opencpn:guid>5c6730f0-8b84-50c0-9a28-bc23d9f87aa1</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.60898889" lon="5.54333333">
+<name>EZ 2
+Iso.R.4s</name>
+<sym>017</sym>
+<cmt>rood # Lichtkarakter: Iso.R.4s</cmt>
+<desc>rood # Lichtkarakter: Iso.R.4s</desc>
+<extensions>
+<opencpn:guid>6abf64b0-6f93-584a-8759-0af85f892dfb</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.634488333333" lon="5.5356983333333">
+<name>EZ 3
+Iso.G.8s</name>
+<sym>064</sym>
+<cmt>groen # Lichtkarakter: Iso.G.8s</cmt>
+<desc>groen # Lichtkarakter: Iso.G.8s</desc>
+<extensions>
+<opencpn:guid>28175cb9-2fae-5b15-999b-d4efa2e02f5b</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.614011666667" lon="5.5294316666667">
+<name>EZ 5
+Iso.G.4s</name>
+<sym>064</sym>
+<cmt>groen # Lichtkarakter: Iso.G.4s</cmt>
+<desc>groen # Lichtkarakter: Iso.G.4s</desc>
+<extensions>
+<opencpn:guid>c12a83b6-0abe-5368-9ed7-ebbe982ef024</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.58930278" lon="5.51248611">
+<name>EZ 6
+Iso.R.4s</name>
+<sym>065</sym>
+<cmt>rood # Lichtkarakter: Iso.R.4s</cmt>
+<desc>rood # Lichtkarakter: Iso.R.4s</desc>
+<extensions>
+<opencpn:guid>2c3616a7-e732-522a-8ac1-11826cf71061</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.60273611" lon="5.51445278">
+<name>EZ 7
+Iso.G.8s</name>
+<sym>149</sym>
+<cmt>groen # Lichtkarakter: Iso.G.8s</cmt>
+<desc>groen # Lichtkarakter: Iso.G.8s</desc>
+<extensions>
+<opencpn:guid>57bf20dd-2535-5286-85ef-261eb07c36f5</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.57854167" lon="5.49814444">
+<name>EZ 8
+Iso.R.8s</name>
+<sym>017</sym>
+<cmt>rood # Lichtkarakter: Iso.R.8s</cmt>
+<desc>rood # Lichtkarakter: Iso.R.8s</desc>
+<extensions>
+<opencpn:guid>64e0c8b8-3298-560b-ba4f-037cef65480c</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.59288056" lon="5.50204722">
+<name>EZ 9
+Iso.G.4s</name>
+<sym>149</sym>
+<cmt>groen # Lichtkarakter: Iso.G.4s</cmt>
+<desc>groen # Lichtkarakter: Iso.G.4s</desc>
+<extensions>
+<opencpn:guid>decd5e39-807b-5ebf-9fac-64652113a95c</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.78210833" lon="5.30162778">
+<name>EZ-A
+LFl.10s</name>
+<sym>217</sym>
+<cmt>rood/wit repeterend # Lichtkarakter: LFl.10s</cmt>
+<desc>rood/wit repeterend # Lichtkarakter: LFl.10s</desc>
+<extensions>
+<opencpn:guid>d80bc565-667c-5699-a5f8-cd2ba8d09f67</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.74353056" lon="5.37111111">
+<name>EZ-B
+Oc.6s</name>
+<sym>217</sym>
+<cmt>rood/wit repeterend # Lichtkarakter: Oc.6s</cmt>
+<desc>rood/wit repeterend # Lichtkarakter: Oc.6s</desc>
+<extensions>
+<opencpn:guid>906a1143-e92a-5511-b786-9d631a4c6152</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.70963056" lon="5.43662778">
+<name>EZ-C
+Iso.8s</name>
+<sym>217</sym>
+<cmt>rood/wit repeterend # Lichtkarakter: Iso.8s</cmt>
+<desc>rood/wit repeterend # Lichtkarakter: Iso.8s</desc>
+<extensions>
+<opencpn:guid>778d0273-ab40-555d-a123-7ea7a19311e3</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.67918056" lon="5.49848611">
+<name>EZ-D
+Iso.6s</name>
+<sym>217</sym>
+<cmt>rood/wit repeterend # Lichtkarakter: Iso.6s</cmt>
+<desc>rood/wit repeterend # Lichtkarakter: Iso.6s</desc>
+<extensions>
+<opencpn:guid>ce33c2d7-0912-5671-9447-45715bfa376f</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.6403" lon="5.51747">
+<name>EZ-N
+VQ</name>
+<sym>153</sym>
+<cmt>zwart/geel # Lichtkarakter: VQ</cmt>
+<desc>zwart/geel # Lichtkarakter: VQ</desc>
+<extensions>
+<opencpn:guid>93bd2196-7d44-5b23-8cc6-44b3256078d2</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.636685" lon="5.52317166667">
+<name>EZ-O
+Q(3)10s</name>
+<sym>154</sym>
+<cmt>zwart/geel/zwart # Lichtkarakter: Q(3)10s</cmt>
+<desc>zwart/geel/zwart # Lichtkarakter: Q(3)10s</desc>
+<extensions>
+<opencpn:guid>fafe1b6f-2913-506e-815f-7c6ef00af4df</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.6369016667" lon="5.51294666667">
+<name>EZ-W
+VQ(9)10s</name>
+<sym>156</sym>
+<cmt>geel/zwart/geel # Lichtkarakter: VQ(9)10s</cmt>
+<desc>geel/zwart/geel # Lichtkarakter: VQ(9)10s</desc>
+<extensions>
+<opencpn:guid>c75d49e9-90e7-58b9-bbad-031422040efc</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.63321389" lon="5.51731389">
+<name>EZ-Z
+Q(6)+LFl.15s</name>
+<sym>155</sym>
+<cmt>geel/zwart # Lichtkarakter: Q(6)+LFl.15s</cmt>
+<desc>geel/zwart # Lichtkarakter: Q(6)+LFl.15s</desc>
+<extensions>
+<opencpn:guid>349b53b2-6cb9-5211-b29c-a243797e6f6d</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.571186666667" lon="5.4860883333333">
+<name>EZ10-FK 1
+Q.R</name>
+<sym>182</sym>
+<cmt>rood/groen # Lichtkarakter: Q.R</cmt>
+<desc>rood/groen # Lichtkarakter: Q.R</desc>
+<extensions>
+<opencpn:guid>fdbcc335-c9c5-5130-92ea-500da26554fa</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.56615833" lon="5.49700833">
+<name>FK 1
+Iso.G.4s</name>
+<sym>149</sym>
+<cmt>groen # Lichtkarakter: Iso.G.4s</cmt>
+<desc>groen # Lichtkarakter: Iso.G.4s</desc>
+<extensions>
+<opencpn:guid>a547ba4f-4a7a-5150-95cc-7178ad0fce8e</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.566036666667" lon="5.5110933333333">
+<name>FK 10
+Iso.R.8s</name>
+<sym>017</sym>
+<cmt>rood # Lichtkarakter: Iso.R.8s</cmt>
+<desc>rood # Lichtkarakter: Iso.R.8s</desc>
+<extensions>
+<opencpn:guid>1f351c37-5d04-5c98-897c-e6480b77763b</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.568553333333" lon="5.4917116666667">
+<name>FK 1A
+Iso.G.8s</name>
+<sym>064</sym>
+<cmt>groen # Lichtkarakter: Iso.G.8s</cmt>
+<desc>groen # Lichtkarakter: Iso.G.8s</desc>
+<extensions>
+<opencpn:guid>1c02afe0-5ada-598f-99ab-b68e550cb18e</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.5669583333" lon="5.49833833333">
+<name>FK 2
+Iso.R.4s</name>
+<sym>017</sym>
+<cmt>rood # Lichtkarakter: Iso.R.4s</cmt>
+<desc>rood # Lichtkarakter: Iso.R.4s</desc>
+<extensions>
+<opencpn:guid>41f90019-c85a-589a-8b4c-a1d63d6983e6</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.5647366667" lon="5.50005833333">
+<name>FK 3
+Iso.G.8s</name>
+<sym>064</sym>
+<cmt>groen # Lichtkarakter: Iso.G.8s</cmt>
+<desc>groen # Lichtkarakter: Iso.G.8s</desc>
+<extensions>
+<opencpn:guid>9734f6a7-e5b9-592e-a645-2a154286eed4</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.565795" lon="5.50103333333">
+<name>FK 4
+Iso.R.8s</name>
+<sym>065</sym>
+<cmt>rood # Lichtkarakter: Iso.R.8s</cmt>
+<desc>rood # Lichtkarakter: Iso.R.8s</desc>
+<extensions>
+<opencpn:guid>64657566-9bf1-5964-9390-610c47f5a999</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.5639766667" lon="5.50425833333">
+<name>FK 5
+Iso.G.2s</name>
+<sym>149</sym>
+<cmt>groen # Lichtkarakter: Iso.G.2s</cmt>
+<desc>groen # Lichtkarakter: Iso.G.2s</desc>
+<extensions>
+<opencpn:guid>72931d3f-d879-5e3c-891a-a3b6d934d439</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.56503611" lon="5.50445278">
+<name>FK 6
+Iso.R.2s</name>
+<sym>065</sym>
+<cmt>rood # Lichtkarakter: Iso.R.2s</cmt>
+<desc>rood # Lichtkarakter: Iso.R.2s</desc>
+<extensions>
+<opencpn:guid>0e9cd33a-1111-526c-acee-f589f76bc089</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.5641083333" lon="5.50840333333">
+<name>FK 7
+Iso.G.4s</name>
+<sym>064</sym>
+<cmt>groen # Lichtkarakter: Iso.G.4s</cmt>
+<desc>groen # Lichtkarakter: Iso.G.4s</desc>
+<extensions>
+<opencpn:guid>9b347bbf-9311-5776-96b9-cbc72cc2f865</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.56525" lon="5.50792">
+<name>FK 8
+Iso.R.4s</name>
+<sym>065</sym>
+<cmt>rood # Lichtkarakter: Iso.R.4s</cmt>
+<desc>rood # Lichtkarakter: Iso.R.4s</desc>
+<extensions>
+<opencpn:guid>23009c34-f776-57eb-895d-5a4a247e4a7b</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.565048333333" lon="5.5121666666667">
+<name>FK 9
+Iso.G.8s</name>
+<sym>149</sym>
+<cmt>groen # Lichtkarakter: Iso.G.8s</cmt>
+<desc>groen # Lichtkarakter: Iso.G.8s</desc>
+<extensions>
+<opencpn:guid>81b717ab-2eef-5f71-9951-a5aec1d65808</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.553461666667" lon="5.456755">
+<name>FLEVO MARINA MIDDEN 
+LFl.R.10s</name>
+<sym>158</sym>
+<cmt>rood # Lichtkarakter: LFl.R.10s</cmt>
+<desc>rood # Lichtkarakter: LFl.R.10s</desc>
+<extensions>
+<opencpn:guid>06bbbea7-de42-57db-9e95-fcec413b6c0a</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.551286666667" lon="5.4545083333333">
+<name>FLEVO MARINE SW HOEK
+Iso.R.4s</name>
+<sym>158</sym>
+<cmt>rood # Lichtkarakter: Iso.R.4s</cmt>
+<desc>rood # Lichtkarakter: Iso.R.4s</desc>
+<extensions>
+<opencpn:guid>ef517014-b13a-5b91-b4e1-05161dc93af6</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.61241111" lon="5.63535556">
+<name>FR-B</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>a5798821-f93b-5c37-9a73-267e989ec12b</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.61443333" lon="5.63213889">
+<name>FR-C
+Fl.Y.10s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.10s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.10s</desc>
+<extensions>
+<opencpn:guid>2176d67c-eda6-57c1-8fee-cbb0a6ee1abd</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.61609444" lon="5.62946111">
+<name>FR-D</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>f0d0fcec-a8a5-58fd-922a-7fea7ba36395</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.61811389" lon="5.62625833">
+<name>FR-E
+Fl.Y.5s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>42247617-f954-527f-9729-26ac632b130f</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.61993611" lon="5.62323611">
+<name>FR-F
+Fl.Y.10s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.10s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.10s</desc>
+<extensions>
+<opencpn:guid>c12eb94c-b953-5a18-8e31-29aff34d3a02</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.62211111" lon="5.61968611">
+<name>FR-G</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>a595d0a7-bee6-565a-89c6-29c4895fb82e</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.62147778" lon="5.61658889">
+<name>FR-H</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>dda14796-d437-5fee-abcd-aae9c62a5549</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.62055278" lon="5.61205556">
+<name>FR-I</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>185b358f-3f06-5083-9a8f-bb2ef1ba3eff</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.61965278" lon="5.60715556">
+<name>FR-J
+Fl.Y.5s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>620045e6-7a7c-5712-b685-53d8b9a3eec6</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.61880556" lon="5.60271944">
+<name>FR-K</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>b1afe958-4629-59b4-9a8a-676af2ea4be6</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.61787778" lon="5.59831944">
+<name>FR-L</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>89fb6843-8ba1-5060-a41b-aa0215e2df64</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.61700278" lon="5.59388056">
+<name>FR-M</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>9242ba01-7c5b-5fe8-9dca-24742d055751</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.61609167" lon="5.58911389">
+<name>FR-N
+Fl.Y.10s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.10s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.10s</desc>
+<extensions>
+<opencpn:guid>b2ce4754-5874-55ca-aef7-d744095331f5</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.61531111" lon="5.58454722">
+<name>FR-O</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>f138fbf7-6c51-5296-83f5-e15f77ad9351</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.61446944" lon="5.58021111">
+<name>FR-P</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>29c08c3d-a572-5793-9b23-4caea85601b6</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.61349722" lon="5.57569444">
+<name>FR-Q</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>8956d33f-92b3-5829-b14f-ee821d51ad15</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.612775" lon="5.57092222">
+<name>FR-R
+Fl.Y.5s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>264ecc2b-f2cd-5959-8467-13a4c490cd76</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.61194444" lon="5.56604444">
+<name>FR-S</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>1ef54866-5571-5660-a578-a1cd1d1c6dc3</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.61067778" lon="5.56145">
+<name>FR-T</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>4965e6fe-e61e-5bf1-b694-2c2891fd6730</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.60939722" lon="5.55656111">
+<name>FR-U</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>72d09282-74d7-5451-85fe-985004ecb4c6</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.60833056" lon="5.55186111">
+<name>FR-V
+Fl.Y.10s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.10s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.10s</desc>
+<extensions>
+<opencpn:guid>57987b21-2c15-5512-8b24-11446b006f69</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.60726389" lon="5.54792778">
+<name>FR-W
+Fl.Y.5s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>ed24b8d9-24ed-5f3d-8363-f8caf96b3165</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.60527222" lon="5.54445833">
+<name>FR-X
+Fl.Y.10s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.10s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.10s</desc>
+<extensions>
+<opencpn:guid>976294b4-9f08-5b01-baee-8a641ec944bd</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.60317778" lon="5.54098611">
+<name>FR-Y
+Fl.Y.5s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>c34db4ac-3754-534a-93e6-bc0db95171d0</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.60159722" lon="5.53680278">
+<name>FR-Z
+Fl.Y.10s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.10s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.10s</desc>
+<extensions>
+<opencpn:guid>b341b5e5-747b-55c9-a3bc-4fc01acfb5d7</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.59991389" lon="5.53235556">
+<name>FR-Z-A</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>25f42e58-5e43-59d3-88b0-2c3a956ebd0c</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.59835556" lon="5.52803889">
+<name>FR-Z-B</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>593629c9-7e06-5994-a8ca-8b008e002a83</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.59571667" lon="5.52487222">
+<name>FR-Z-C</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>fc845690-89be-52f0-a2ef-6988ed7c3b1f</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.59331111" lon="5.52194444">
+<name>FR-Z-D
+Fl.Y.5s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>26230cc8-b0dc-5fc3-ad18-c62a6806eaf7</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.59053056" lon="5.5197">
+<name>FR-Z-E</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>f3fd2384-3e6a-5eb4-ac50-c546701240dd</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.58782778" lon="5.51529167">
+<name>FR-Z-F</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>896fb205-7780-5bb7-bd55-df1230c9053c</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.58608056" lon="5.51963611">
+<name>FR-Z-G</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>c660c4fe-de46-533c-aae7-f61b1137b8c1</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.5844" lon="5.52386389">
+<name>FR-Z-H
+Fl.Y.10s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.10s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.10s</desc>
+<extensions>
+<opencpn:guid>2b1ecce6-907c-571d-a0ae-133c2a944bde</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.58272778" lon="5.52801944">
+<name>FR-Z-I</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>c45e5bae-19bd-5071-bef6-bcde1098d0b7</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.58108056" lon="5.53225278">
+<name>FR-Z-J
+Fl.Y.5s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>9e2e8dc3-61a4-5e64-aa38-a12db61ef434</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.57926944" lon="5.53670833">
+<name>FR-Z-K</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>e5a57573-6b15-5315-8345-6c3e2d2dc20a</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.581046666667" lon="5.53998">
+<name>FR-Z-L
+Fl.Y.10s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.10s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.10s</desc>
+<extensions>
+<opencpn:guid>b2b6c1ca-283d-598a-84cc-9b308ffae4c2</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.568219" lon="5.5175613333333">
+<name>G H
+F.G</name>
+<sym>189</sym>
+<cmt>groen/wit repeterend # Lichtkarakter: F.G</cmt>
+<desc>groen/wit repeterend # Lichtkarakter: F.G</desc>
+<extensions>
+<opencpn:guid>1f6239d4-a94a-54ea-a70d-d8f2e06e4003</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.572164666667" lon="5.5218586666667">
+<name>GB1 N
+Q</name>
+<sym>199</sym>
+<cmt> # Lichtkarakter: Q</cmt>
+<desc> # Lichtkarakter: Q</desc>
+<extensions>
+<opencpn:guid>2b3b01b0-e364-512c-b68c-2b18bebc4ef3</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.571832833333" lon="5.5171376666667">
+<name>GB2 W
+Q(9)15s</name>
+<sym>202</sym>
+<cmt>geel/zwart/geel # Lichtkarakter: Q(9)15s</cmt>
+<desc>geel/zwart/geel # Lichtkarakter: Q(9)15s</desc>
+<extensions>
+<opencpn:guid>f41dfd02-d913-5c14-b255-b88adc00fead</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.569509666667" lon="5.5141115">
+<name>GB3 W
+VQ(9)10s</name>
+<sym>202</sym>
+<cmt>geel/zwart/geel # Lichtkarakter: VQ(9)10s</cmt>
+<desc>geel/zwart/geel # Lichtkarakter: VQ(9)10s</desc>
+<extensions>
+<opencpn:guid>740a11b1-b73c-5105-a43c-731d0e37ba65</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.62539444" lon="5.61681111">
+<name>KB 1-MR 2
+Iso.2s</name>
+<sym>175</sym>
+<cmt>rood/groen repeterend # Lichtkarakter: Iso.2s</cmt>
+<desc>rood/groen repeterend # Lichtkarakter: Iso.2s</desc>
+<extensions>
+<opencpn:guid>20d1538c-a515-50dc-9af6-b76a12028c0e</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.715861666667" lon="5.2953383333333">
+<name>Kite</name>
+<sym>230</sym>
+<cmt>niet toegewezen</cmt>
+<desc>niet toegewezen</desc>
+<extensions>
+<opencpn:guid>56f5903a-dd0c-5cdf-bbd9-062461cde344</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.67379444" lon="5.36823611">
+<name>Kite-TZ-A</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>cafbd193-c9f3-5beb-a719-29819e48610e</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.67656111" lon="5.37392778">
+<name>Kite-TZ-B</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>d5301ac8-3b67-5817-af70-e4adf6175659</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.679375" lon="5.37975278">
+<name>Kite-TZ-C</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>532beedd-94b9-5dca-930e-29a3f976ab74</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.68219722" lon="5.38555">
+<name>Kite-TZ-D</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>f88c3732-d11e-54e5-9572-a10e0ea19bee</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.68500278" lon="5.39131667">
+<name>Kite-TZ-E</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>53839729-678d-5491-a13f-dd84f4cf8bbd</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.68786667" lon="5.39716111">
+<name>Kite-TZ-F</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>063e02bc-cd2c-59d2-844c-480b61cf2655</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.68508056" lon="5.40310278">
+<name>Kite-TZ-G</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>f650d32d-0fac-5cee-9dbc-6a35e9b91289</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.68228611" lon="5.40900278">
+<name>Kite-TZ-H</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>7cd384c3-3c22-5546-ab5b-038042ee80f2</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.67956944" lon="5.41494722">
+<name>Kite-TZ-I</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>24e99d34-be8b-5656-84dc-4febbcf55e38</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.67675556" lon="5.42081389">
+<name>Kite-TZ-J</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>143501ee-8c8e-5aa3-bffd-68cb83cc13ca</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.67397778" lon="5.42685833">
+<name>Kite-TZ-K</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>6e5f82a9-c92e-58af-855f-951e35109069</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.67110556" lon="5.43275556">
+<name>Kite-TZ-L</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>b0514a0f-eb15-553b-a1a0-5d0bc85cd9aa</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.66833611" lon="5.43873889">
+<name>Kite-TZ-M</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>abd5e7b8-48fd-5054-aab4-b80468e6e092</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.66550278" lon="5.44464722">
+<name>Kite-TZ-N</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>ee683d49-912d-5a07-8696-8c6087497ce7</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.66270556" lon="5.45063056">
+<name>Kite-TZ-O</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>1e78101f-e40a-5956-bdac-3c3d7fe7eef4</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.65996944" lon="5.45651111">
+<name>Kite-TZ-P</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>b12e7cbe-37cc-585c-a9e6-c165e4a45cf2</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.65723611" lon="5.46228611">
+<name>Kite-TZ-Q</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>61e7599e-b0e0-5130-908a-5ceb86bca795</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.65554444" lon="5.46587222">
+<name>Kite-TZ-R</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>0bbde2ea-a8a7-52eb-a9e0-c213fc8204d6</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.65386944" lon="5.46940278">
+<name>Kite-TZ-S</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>59cb6b38-0900-5507-b70a-8e15350d67f7</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.65257778" lon="5.46552778">
+<name>Kite-TZ-T</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>864f89ed-6888-5965-a1c8-8f6414694e4f</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.65126944" lon="5.46168333">
+<name>Kite-TZ-U</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>444e9294-54a7-5be0-88a4-77fa602dd63b</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.649975" lon="5.45788333">
+<name>Kite-TZ-V</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>ff24d76d-ca37-5068-be6d-e9bc49b75c5f</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.64863056" lon="5.45399444">
+<name>Kite-TZ-W</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>d2abd28a-0e4a-567a-a956-5ca3511224db</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.64735556" lon="5.45013611">
+<name>Kite-TZ-X</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>35bf4813-55f0-539d-a48d-b915aa1bbc54</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.64602778" lon="5.44623333">
+<name>Kite-TZ-Y</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>42d92d89-bf3c-5dca-aba9-968551ca7402</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.64472778" lon="5.442375">
+<name>Kite-TZ-Z</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>721a8b6a-79e7-5879-80b3-dc52946268de</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.64344444" lon="5.43842778">
+<name>Kite-TZ-Z-A</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>e7204756-bcca-54f9-8e7c-dc583d594acb</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.64211389" lon="5.43454167">
+<name>Kite-TZ-Z-B</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>4dab1c0b-111c-51a2-a439-217f9acea2b5</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.64079444" lon="5.43063889">
+<name>Kite-TZ-Z-C</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>59897a72-a20d-5e3c-a3f6-d97c972ae6af</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.63949444" lon="5.42676944">
+<name>Kite-TZ-Z-D</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>39a6a62c-3e9d-5656-82c1-a6fbb2d866ac</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.63818333" lon="5.42285278">
+<name>Kite-TZ-Z-E</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>b3e8ff94-6650-555e-9a33-55ac39b1f8c4</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.63685278" lon="5.41883333">
+<name>Kite-TZ-Z-F</name>
+<sym>181</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>9cbaac8c-460e-5d83-bfb8-a75be17874b4</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.607486666667" lon="5.5558383333333">
+<name>MB-N
+Q</name>
+<sym>153</sym>
+<cmt>zwart/geel # Lichtkarakter: Q</cmt>
+<desc>zwart/geel # Lichtkarakter: Q</desc>
+<extensions>
+<opencpn:guid>9159d482-daa8-56b7-8f5c-892468d5f858</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.60721389" lon="5.55740278">
+<name>MB-O</name>
+<sym>092</sym>
+<cmt>zwart/geel/zwart</cmt>
+<desc>zwart/geel/zwart</desc>
+<extensions>
+<opencpn:guid>5317fd31-49e9-5165-bffb-ec63eeee0fc7</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.60658889" lon="5.55500556">
+<name>MB-W</name>
+<sym>091</sym>
+<cmt>geel/zwart/geel</cmt>
+<desc>geel/zwart/geel</desc>
+<extensions>
+<opencpn:guid>d516bcdf-18b2-513d-bfeb-a4df23247386</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.606188333333" lon="5.556955">
+<name>MB-Z
+Q(6)+LFl.15s</name>
+<sym>155</sym>
+<cmt>geel/zwart # Lichtkarakter: Q(6)+LFl.15s</cmt>
+<desc>geel/zwart # Lichtkarakter: Q(6)+LFl.15s</desc>
+<extensions>
+<opencpn:guid>225417cf-89ca-5a10-b237-71a120f93e5c</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.58132" lon="5.523235">
+<name>Meetpaal
+Fl(3)Y.5s</name>
+<sym>179</sym>
+<cmt>geel # Lichtkarakter: Fl(3)Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl(3)Y.5s</desc>
+<extensions>
+<opencpn:guid>15a377ed-ae02-526e-93f1-4485b42b7edc</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.61160556" lon="5.60758611">
+<name>MR 5
+Iso.G.8s</name>
+<sym>064</sym>
+<cmt>groen # Lichtkarakter: Iso.G.8s</cmt>
+<desc>groen # Lichtkarakter: Iso.G.8s</desc>
+<extensions>
+<opencpn:guid>3a3201e4-bc79-52cc-8851-153809954128</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.567665833333" lon="5.5129615">
+<name>R H
+F</name>
+<sym>191</sym>
+<cmt>rood/wit repeterend # Lichtkarakter: F</cmt>
+<desc>rood/wit repeterend # Lichtkarakter: F</desc>
+<extensions>
+<opencpn:guid>2b37d438-92d4-5608-9453-d5271fbafb43</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.5684783333" lon="5.46728333333">
+<name>SECL HOUTRIBDIJK
+Fl(3)Y.10s</name>
+<sym>179</sym>
+<cmt>geel # Lichtkarakter: Fl(3)Y.10s</cmt>
+<desc>geel # Lichtkarakter: Fl(3)Y.10s</desc>
+<extensions>
+<opencpn:guid>25c86919-58ce-5866-9e8b-dd818a7f2873</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.52965556" lon="5.42985278">
+<name>SPH-D</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>555c61b5-ad3f-529b-b4aa-27835701bac4</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.53049722" lon="5.42849167">
+<name>SPH-E</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>14092b12-2ad3-5c02-bfe5-c8e31f49d8b5</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.53137222" lon="5.42711944">
+<name>SPH-F</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>4558ae3c-165b-5e37-a07e-d3c479b9c4ec</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.61666667" lon="5.5">
+<name>SPORT E
+Fl.Y.5s</name>
+<sym>072</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>33372229-13ed-5ec6-9bee-0d14c740cd89</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.6" lon="5.46666667">
+<name>SPORT F
+Fl.Y.5s</name>
+<sym>072</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>09fc6210-6760-5c64-be08-b6d8ed91f750</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.592536666667" lon="5.557655">
+<name>VIJ-A</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>56b15387-075e-5ce7-b632-40225fd991d6</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.592996666667" lon="5.5569466666667">
+<name>VIJ-B</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>be47ea38-f832-537c-ab1d-93f000f7186b</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.593383333333" lon="5.55618">
+<name>VIJ-C</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>ec33dc87-66b0-5dce-959a-f2e1b6f41fdb</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.593055" lon="5.55413">
+<name>VIJ-D</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>2fa3536b-83d4-5a2c-99e8-8e1b8d897ece</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.591495" lon="5.5514966666667">
+<name>VIJ-E</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>565e35cd-d696-57aa-906f-eef9c755311c</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.590328333333" lon="5.5510366666667">
+<name>VIJ-F</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>d6e92dfa-0235-5300-835b-784f82acd17f</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.589895" lon="5.5518">
+<name>VIJ-G</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>c33d727f-ab99-5e93-bd76-090f9ad225c1</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.589505" lon="5.5527">
+<name>VIJ-H</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>4bbf21f4-33de-56eb-9808-bd3846f2b8e9</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.568016666667" lon="5.5175133333333">
+<name>VIJ-I
+Fl.Y.5s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>c3f9335e-bc89-56fe-9095-8cfb9f63345d</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.56728" lon="5.516245">
+<name>VIJ-J
+Fl.Y.5s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>05ee6f1c-1b89-546e-824d-558b6367510b</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.566546666667" lon="5.5149583333333">
+<name>VIJ-K
+Fl.Y.5s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>095aa34a-9aae-50a8-abfb-ba02b0e0316e</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.565811666667" lon="5.5136883333333">
+<name>VIJ-L
+Fl.Y.5s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>14c9c781-f021-5530-8691-556a56036dab</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.56539444" lon="5.51453611">
+<name>VIJ-M
+Fl.Y.5s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>01dd6fdc-0cf4-557a-8117-f03af579b8b5</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.564786666667" lon="5.5130866666667">
+<name>VIJ-N
+Fl.Y.5s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>6d47c592-e954-5269-a7dc-d610479c3f1c</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.564483333333" lon="5.513755">
+<name>VIJ-O</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>0bb79558-cfe1-5d6b-add2-45db4f7d02fe</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.553303333333" lon="5.485045">
+<name>VIJ-P</name>
+<sym>025</sym>
+<cmt>geel</cmt>
+<desc>geel</desc>
+<extensions>
+<opencpn:guid>382e7fea-0854-509f-a78f-60dbd4ee4a57</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="200000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.553846666667" lon="5.4851083333333">
+<name>VIJ-Q
+Fl.Y.5s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>3d94309d-94dd-5fcd-88dc-f84d75abe5ff</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.553788333333" lon="5.4825716666667">
+<name>VIJ-R
+Fl.Y.5s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>939a29af-c94c-5086-b979-df31594415f5</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.553728333333" lon="5.4800216666667">
+<name>VIJ-S
+Fl.Y.5s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>e9055358-e5f6-5a3a-b0c1-d294055aa5d9</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+<wpt lat="52.553138333333" lon="5.4802283333333">
+<name>VIJ-T
+Fl.Y.5s</name>
+<sym>161</sym>
+<cmt>geel # Lichtkarakter: Fl.Y.5s</cmt>
+<desc>geel # Lichtkarakter: Fl.Y.5s</desc>
+<extensions>
+<opencpn:guid>215af364-7cb6-59e9-8b72-b35a311fa8b6</opencpn:guid>
+<opencpn:scale_min_max UseScale="true" ScaleMin="400000" ScaleMax="0" />
+</extensions>
+</wpt>
+</gpx>
