@@ -6,6 +6,7 @@ Webapp (PWA) die op je telefoon laat zien hoe goed een zeilboot het doet t.o.v. 
 - **Wind**: live van [actuelewind.nl](https://www.actuelewind.nl), elke minuut vernieuwd. Standaard spot *Trintelhaven Houtribdijk*, maar in Instellingen kiezen uit alle (54) spots van de site.
 - **Polar diagram**: standaard de **Piranha (MG 26, NED 1926)**, overgenomen uit het officiele ORC Club Certificate. Upload je eigen **ORC-certificaat (PDF)** in Instellingen voor de polar van jouw eigen schip. Ook handmatig volledig aanpasbaar.
 - **Performance %**: 2-seconden-gemiddelde GPS-snelheid gedeeld door de target-snelheid uit de polar voor de actuele TWA/TWS (koers/snelheid worden gemiddeld om GPS-ruis te dempen).
+- **Racetimer + startlijn**: swipe naar het tweede scherm voor een aftel-klok naar een instelbare starttijd, en een startlijn-tool (twee gepinde punten) die de afstand tot de lijn op je huidige koers en de "time to burn" (hoeveel tijd je te veel/te weinig hebt om precies op tijd op de lijn te zijn) berekent.
 
 ## Waarom een server nodig is
 
@@ -56,6 +57,17 @@ In Instellingen → Polar diagram kun je een ORC (Club) Certificate PDF uploaden
 Werkt met het standaard ORC Club Certificate-sjabloon; bij een sterk afwijkende lay-out (ander land/systeem) kan het parsen mislukken — de app toont dan een foutmelding i.p.v. verkeerde cijfers.
 
 **Vercel-specifieke kanttekening**: `pdf-parse` (voor het lezen van de PDF) bevat browser-only code die op Vercel tot twee subtiele fouten leidde: `DOMMatrix is not defined` (opgelost met een polyfill, zie de top van `lib/orcParser.js`) en `Cannot find module ...pdf.worker.mjs` (opgelost via `functions.includeFiles` in `vercel.json`, die het hele pdf-parse/pdfjs-dist-pakket meeneemt in de functiebundel). Beide fixes staan al in dit project.
+
+## Racetimer + startlijn
+
+Tweede scherm (swipe of tik op de dot onderin):
+
+- **Timer**: tik op de klok om een starttijd (uu:mm:ss, vandaag) in te stellen. Groot: minuten:seconden tot die tijd. Rechtsboven klein: de ingestelde tijd zelf. Wordt onthouden voor de rest van de dag (localStorage), maar niet meegenomen naar de volgende dag.
+- **Startlijn**: "Pin punt A" en "Pin punt B" leggen de twee uiteinden van de startlijn vast op je huidige GPS-positie (bv. bij de pin-boei en het startschip langsvaren). Zodra beide gezet zijn:
+  - **Afstand tot lijn**: de afstand (in meters) tot het punt waar je *huidige koers* de startlijn kruist — niet de kortste (loodrechte) afstand.
+  - **Time to burn**: `(tijd tot start) - (afstand / huidige snelheid)`. Positief (groen) = je bent te vroeg, moet nog tijd doden. Negatief (rood) = je bent te laat, moet opschieten.
+  - Als je koers de lijn niet snijdt (weg van de lijn, of evenwijdig), of het kruispunt ligt buiten de twee gepinde punten (het verlengde van de lijn), toont de app dat expliciet i.p.v. een misleidend getal.
+  - Geometrie: lat/lon worden lokaal plat geprojecteerd (meters, nauwkeurig genoeg over lijn-/aanloopafstanden) voor de lijn-kruising-berekening in `app.js` (`localXY`/`computeLineCrossing`).
 
 ## Beperkingen om te weten
 

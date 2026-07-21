@@ -3,6 +3,8 @@ const WIND_POLL_MS = 60_000;
 const SMOOTHING_WINDOW_MS = 2000;
 const DEFAULT_STATION_CODE = "6258"; // Trintelhaven Houtribdijk
 const SPOT_STORAGE_KEY = "sailing-wind-spot-v1";
+const TIMER_STORAGE_KEY = "sailing-race-target-v1";
+const LINE_STORAGE_KEY = "sailing-startline-v1";
 
 let polar = loadPolar();
 let manualWind = null; // {tws, twd} when manual override active
@@ -13,6 +15,8 @@ let lastFix = null; // {lat, lon, time}
 let lastCourseDeg = null; // 2s gemiddelde koers, gebruikt voor weergave en TWA
 let lastSpeedKn = null; // 2s gemiddelde snelheid, gebruikt voor weergave en performance%
 let fixBuffer = []; // recente {time, speedKn, courseDeg} samples, voor het 2s voortschrijdend gemiddelde
+let raceTargetTimeStr = loadRaceTarget(); // "HH:MM:SS" of null
+let raceLine = loadRaceLine(); // {a: {lat,lon}|null, b: {lat,lon}|null}
 
 const el = (id) => document.getElementById(id);
 
@@ -53,6 +57,162 @@ function circularMeanDeg(anglesDeg) {
     sumCos += Math.cos(toRad(a));
   });
   return (toDeg(Math.atan2(sumSin, sumCos)) + 360) % 360;
+}
+
+// --- Racetimer + startlijn: opslag ---
+
+function loadRaceTarget() {
+  try {
+    const raw = localStorage.getItem(TIMER_STORAGE_KEY);
+    if (!raw) return null;
+    const data = JSON.parse(raw);
+    if (data.dateStr !== new Date().toDateString()) return null; // niet meenemen naar volgende dag
+    return data.time;
+  } catch {
+    return null;
+  }
+}
+function saveRaceTarget(timeStr) {
+  localStorage.setItem(TIMER_STORAGE_KEY, JSON.stringify({ time: timeStr, dateStr: new Date().toDateString() }));
+}
+function clearRaceTarget() {
+  localStorage.removeItem(TIMER_STORAGE_KEY);
+}
+
+function loadRaceLine() {
+  try {
+    const raw = localStorage.getItem(LINE_STORAGE_KEY);
+    if (!raw) return { a: null, b: null };
+    const data = JSON.parse(raw);
+    return { a: data.a || null, b: data.b || null };
+  } catch {
+    return { a: null, b: null };
+  }
+}
+function saveRaceLine() {
+  localStorage.setItem(LINE_STORAGE_KEY, JSON.stringify(raceLine));
+}
+
+function getRaceTargetMs() {
+  if (!raceTargetTimeStr) return null;
+  const [h, m, s] = raceTargetTimeStr.split(":").map(Number);
+  const now = new Date();
+  return new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, m, s || 0, 0).getTime();
+}
+
+function formatCountdown(totalSeconds) {
+  const clamped = Math.max(0, Math.ceil(totalSeconds));
+  const h = Math.floor(clamped / 3600);
+  const m = Math.floor((clamped % 3600) / 60);
+  const s = clamped % 60;
+  const mm = h > 0 ? String(m).padStart(2, "0") : String(m);
+  const ss = String(s).padStart(2, "0");
+  return h > 0 ? `${h}:${mm}:${ss}` : `${mm}:${ss}`;
+}
+
+function formatSigned(totalSeconds) {
+  const sign = totalSeconds < 0 ? "-" : "+";
+  const abs = Math.round(Math.abs(totalSeconds));
+  const m = Math.floor(abs / 60);
+  const s = abs % 60;
+  return `${sign}${m}:${String(s).padStart(2, "0")}`;
+}
+
+// --- Startlijn: geometrie ---
+// Lokale platte projectie (meters) rond een referentiepunt, nauwkeurig genoeg over de
+// afstand van een startlijn/aanloop (hooguit een paar km).
+function localXY(lat, lon, refLat, refLon) {
+  const metersPerDegLat = 111320;
+  const metersPerDegLon = 111320 * Math.cos(toRad(refLat));
+  return { x: (lon - refLon) * metersPerDegLon, y: (lat - refLat) * metersPerDegLat };
+}
+
+// Bepaalt waar de huidige koers (als rechte lijn vanaf de boot) de startlijn kruist.
+// Geeft { distanceM, onSegment } terug, of null als er geen bruikbare kruising is
+// (bv. koers evenwijdig aan de lijn, of het kruispunt ligt achter de boot).
+function computeLineCrossing() {
+  if (!raceLine.a || !raceLine.b || !lastFix || lastCourseDeg == null) return null;
+
+  const refLat = raceLine.a.lat;
+  const refLon = raceLine.a.lon;
+  const A = { x: 0, y: 0 };
+  const B = localXY(raceLine.b.lat, raceLine.b.lon, refLat, refLon);
+  const O = localXY(lastFix.lat, lastFix.lon, refLat, refLon);
+  const heading = toRad(lastCourseDeg);
+  const D = { x: Math.sin(heading), y: Math.cos(heading) }; // eenheidsvector, 0deg=noord(+y), 90deg=oost(+x)
+
+  const E = { x: B.x - A.x, y: B.y - A.y };
+  const det = E.x * D.y - E.y * D.x;
+  if (Math.abs(det) < 1e-9) return null; // koers evenwijdig aan de lijn
+
+  const dx = A.x - O.x;
+  const dy = A.y - O.y;
+  const t = (E.x * dy - E.y * dx) / det; // afstand (m) langs de koers tot het kruispunt
+  const s = (D.x * dy - D.y * dx) / det; // positie op de lijn, 0 = punt A, 1 = punt B
+
+  if (t < 0) return null; // kruispunt ligt achter de boot
+  return { distanceM: t, onSegment: s >= 0 && s <= 1 };
+}
+
+function renderRaceScreen() {
+  const targetMs = getRaceTargetMs();
+  const timerValueEl = el("timerValue");
+  timerValueEl.classList.remove("warn", "done");
+
+  if (targetMs != null) {
+    el("timerTargetLabel").textContent = new Date(targetMs).toTimeString().slice(0, 8);
+    const remainingSec = (targetMs - Date.now()) / 1000;
+    timerValueEl.textContent = formatCountdown(remainingSec);
+    if (remainingSec <= 0) timerValueEl.classList.add("done");
+    else if (remainingSec <= 60) timerValueEl.classList.add("warn");
+  } else {
+    el("timerTargetLabel").textContent = "--:--:--";
+    timerValueEl.textContent = "--:--";
+  }
+
+  el("pinAStatus").textContent = raceLine.a ? "A: gezet" : "A: niet gezet";
+  el("pinAStatus").classList.toggle("set", !!raceLine.a);
+  el("pinBStatus").textContent = raceLine.b ? "B: gezet" : "B: niet gezet";
+  el("pinBStatus").classList.toggle("set", !!raceLine.b);
+
+  const hintEl = el("lineHint");
+  const ttbEl = el("ttbValue");
+  ttbEl.style.color = "";
+
+  if (!raceLine.a || !raceLine.b) {
+    el("lineDistanceValue").textContent = "-- m";
+    ttbEl.textContent = "--:--";
+    hintEl.textContent = "Pin beide punten van de startlijn.";
+    return;
+  }
+  if (!lastFix || lastCourseDeg == null) {
+    el("lineDistanceValue").textContent = "-- m";
+    ttbEl.textContent = "--:--";
+    hintEl.textContent = "Wachten op GPS...";
+    return;
+  }
+
+  const crossing = computeLineCrossing();
+  if (!crossing) {
+    el("lineDistanceValue").textContent = "-- m";
+    ttbEl.textContent = "--:--";
+    hintEl.textContent = "Geen kruising met de lijn op de huidige koers.";
+    return;
+  }
+
+  el("lineDistanceValue").textContent = Math.round(crossing.distanceM) + " m";
+  hintEl.textContent = crossing.onSegment ? "" : "Kruispunt ligt buiten de lijn (verlengde).";
+
+  if (targetMs != null && lastSpeedKn != null && lastSpeedKn > 0.2) {
+    const speedMs = lastSpeedKn / MS_TO_KN;
+    const timeToLineSec = crossing.distanceM / speedMs;
+    const remainingSec = (targetMs - Date.now()) / 1000;
+    const ttbSec = remainingSec - timeToLineSec;
+    ttbEl.textContent = formatSigned(ttbSec);
+    ttbEl.style.color = ttbSec >= 0 ? "#3cc26e" : "#e74c3c";
+  } else {
+    ttbEl.textContent = "--:--";
+  }
 }
 
 function onPosition(pos) {
@@ -363,10 +523,78 @@ el("manualTwd").addEventListener("input", (e) => {
   pollWind();
 });
 
+// --- Racetimer + startlijn: bediening ---
+
+el("timerCard").addEventListener("click", () => {
+  el("timerTargetInput").value = raceTargetTimeStr || "";
+  el("timerModal").classList.remove("hidden");
+});
+el("closeTimerModalBtn").addEventListener("click", () => el("timerModal").classList.add("hidden"));
+el("timerModal").addEventListener("click", (e) => {
+  if (e.target.id === "timerModal") el("timerModal").classList.add("hidden");
+});
+
+el("saveTimerBtn").addEventListener("click", () => {
+  const val = el("timerTargetInput").value;
+  if (val) {
+    raceTargetTimeStr = val.length === 5 ? val + ":00" : val; // HH:MM -> HH:MM:SS
+    saveRaceTarget(raceTargetTimeStr);
+  }
+  el("timerModal").classList.add("hidden");
+  renderRaceScreen();
+});
+el("clearTimerBtn").addEventListener("click", () => {
+  raceTargetTimeStr = null;
+  clearRaceTarget();
+  el("timerModal").classList.add("hidden");
+  renderRaceScreen();
+});
+
+el("pinABtn").addEventListener("click", () => {
+  if (!lastFix) {
+    el("lineHint").textContent = "Nog geen GPS-positie beschikbaar.";
+    return;
+  }
+  raceLine.a = { lat: lastFix.lat, lon: lastFix.lon };
+  saveRaceLine();
+  renderRaceScreen();
+});
+el("pinBBtn").addEventListener("click", () => {
+  if (!lastFix) {
+    el("lineHint").textContent = "Nog geen GPS-positie beschikbaar.";
+    return;
+  }
+  raceLine.b = { lat: lastFix.lat, lon: lastFix.lon };
+  saveRaceLine();
+  renderRaceScreen();
+});
+el("clearLineBtn").addEventListener("click", () => {
+  raceLine = { a: null, b: null };
+  saveRaceLine();
+  renderRaceScreen();
+});
+
+// --- Swipe-indicator tussen de schermen ---
+
+const screensEl = el("screens");
+const dotEls = document.querySelectorAll("#screenDots .dot");
+screensEl.addEventListener("scroll", () => {
+  const idx = Math.round(screensEl.scrollLeft / screensEl.clientWidth);
+  dotEls.forEach((d, i) => d.classList.toggle("active", i === idx));
+});
+dotEls.forEach((dot) => {
+  dot.addEventListener("click", () => {
+    const idx = Number(dot.dataset.screen);
+    screensEl.scrollTo({ left: idx * screensEl.clientWidth, behavior: "smooth" });
+  });
+});
+
 // --- boot ---
 startGps();
 pollWind();
+renderRaceScreen();
 setInterval(pollWind, WIND_POLL_MS);
+setInterval(renderRaceScreen, 200);
 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js").catch(() => {});

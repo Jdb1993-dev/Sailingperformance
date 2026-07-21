@@ -7,6 +7,7 @@ html, body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
+body { display: flex; flex-direction: column; min-height: 100vh; }
 
 header {
   display: flex;
@@ -15,6 +16,7 @@ header {
   padding: 14px 16px;
   background: #08182b;
   border-bottom: 1px solid #14304f;
+  flex-shrink: 0;
 }
 header h1 { font-size: 1.1rem; margin: 0; font-weight: 600; letter-spacing: 0.02em; }
 #settingsBtn {
@@ -22,7 +24,56 @@ header h1 { font-size: 1.1rem; margin: 0; font-weight: 600; letter-spacing: 0.02
   padding: 4px 8px;
 }
 
-main { padding: 16px; max-width: 480px; margin: 0 auto; }
+.screens {
+  flex: 1 1 auto;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.screens::-webkit-scrollbar { display: none; }
+.screen { flex: 0 0 100%; scroll-snap-align: start; min-width: 100%; }
+.screen-inner { padding: 16px; max-width: 480px; margin: 0 auto; }
+
+.dots { display: flex; justify-content: center; gap: 8px; padding: 4px 0 14px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: #1b3a5c; transition: background-color 0.2s ease; }
+.dot.active { background: #4aa3ff; }
+
+.timer-card {
+  position: relative;
+  text-align: center;
+  background: #102944;
+  border-radius: 16px;
+  padding: 28px 16px 22px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+.timer-target {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 0.8rem;
+  color: #8fb0d1;
+  font-variant-numeric: tabular-nums;
+}
+.timer-value {
+  font-size: 4.2rem;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.timer-value.warn { color: #f5b942; }
+.timer-value.done { color: #e74c3c; }
+.timer-hint { color: #8fb0d1; margin-top: 8px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+.pin-status { font-size: 0.8rem; color: #8fb0d1; }
+.pin-status.set { color: #3cc26e; }
+
+input[type="time"] {
+  background: #08182b; border: 1px solid #1b3a5c; color: #eaf2fb;
+  border-radius: 6px; padding: 6px 8px; font-size: 0.95rem;
+}
 
 .perf-card {
   text-align: center;

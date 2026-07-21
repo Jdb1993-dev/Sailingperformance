@@ -16,45 +16,106 @@
     <button id="settingsBtn" aria-label="Instellingen">&#9881;</button>
   </header>
 
-  <main>
-    <section class="perf-card">
-      <div class="perf-value" id="perfValue">--%</div>
-      <div class="perf-label">performance t.o.v. polar</div>
-      <div class="perf-bar-track"><div class="perf-bar-fill" id="perfBarFill"></div></div>
+  <main id="screens" class="screens">
+    <section class="screen" id="screenPerformance">
+      <div class="screen-inner">
+        <section class="perf-card">
+          <div class="perf-value" id="perfValue">--%</div>
+          <div class="perf-label">performance t.o.v. polar</div>
+          <div class="perf-bar-track"><div class="perf-bar-fill" id="perfBarFill"></div></div>
+        </section>
+
+        <section class="grid">
+          <div class="tile">
+            <div class="tile-label">Snelheid (GPS)</div>
+            <div class="tile-value" id="sogValue">-- kn</div>
+          </div>
+          <div class="tile">
+            <div class="tile-label">Target (polar)</div>
+            <div class="tile-value" id="targetValue">-- kn</div>
+          </div>
+          <div class="tile">
+            <div class="tile-label">Koers (COG)</div>
+            <div class="tile-value" id="cogValue">--&deg;</div>
+          </div>
+          <div class="tile">
+            <div class="tile-label">TWA</div>
+            <div class="tile-value" id="twaValue">--&deg;</div>
+          </div>
+          <div class="tile">
+            <div class="tile-label">Wind (TWS)</div>
+            <div class="tile-value" id="twsValue">-- kn</div>
+          </div>
+          <div class="tile">
+            <div class="tile-label">Windrichting</div>
+            <div class="tile-value" id="twdValue">--&deg;</div>
+          </div>
+        </section>
+
+        <section class="status" id="statusBox">
+          <span id="gpsStatus">GPS: wachten...</span>
+          <span id="windStatus">Wind: wachten...</span>
+        </section>
+      </div>
     </section>
 
-    <section class="grid">
-      <div class="tile">
-        <div class="tile-label">Snelheid (GPS)</div>
-        <div class="tile-value" id="sogValue">-- kn</div>
-      </div>
-      <div class="tile">
-        <div class="tile-label">Target (polar)</div>
-        <div class="tile-value" id="targetValue">-- kn</div>
-      </div>
-      <div class="tile">
-        <div class="tile-label">Koers (COG)</div>
-        <div class="tile-value" id="cogValue">--&deg;</div>
-      </div>
-      <div class="tile">
-        <div class="tile-label">TWA</div>
-        <div class="tile-value" id="twaValue">--&deg;</div>
-      </div>
-      <div class="tile">
-        <div class="tile-label">Wind (TWS)</div>
-        <div class="tile-value" id="twsValue">-- kn</div>
-      </div>
-      <div class="tile">
-        <div class="tile-label">Windrichting</div>
-        <div class="tile-value" id="twdValue">--&deg;</div>
-      </div>
-    </section>
+    <section class="screen" id="screenTimer">
+      <div class="screen-inner">
+        <section class="timer-card" id="timerCard">
+          <div class="timer-target" id="timerTargetLabel">--:--:--</div>
+          <div class="timer-value" id="timerValue">--:--</div>
+          <div class="timer-hint">tik om starttijd in te stellen</div>
+        </section>
 
-    <section class="status" id="statusBox">
-      <span id="gpsStatus">GPS: wachten...</span>
-      <span id="windStatus">Wind: wachten...</span>
+        <section class="settings-section">
+          <h3>Startlijn</h3>
+          <p class="hint">Vaar naar elk uiteinde van de startlijn en pin daar het punt. De afstand en time-to-burn worden berekend op basis van je huidige koers en snelheid.</p>
+          <div class="row">
+            <button id="pinABtn">Pin punt A</button>
+            <button id="pinBBtn">Pin punt B</button>
+            <button id="clearLineBtn" class="secondary">Wis lijn</button>
+          </div>
+          <div class="row" id="pinStatusRow">
+            <span id="pinAStatus" class="pin-status">A: niet gezet</span>
+            <span id="pinBStatus" class="pin-status">B: niet gezet</span>
+          </div>
+        </section>
+
+        <section class="grid">
+          <div class="tile">
+            <div class="tile-label">Afstand tot lijn</div>
+            <div class="tile-value" id="lineDistanceValue">-- m</div>
+          </div>
+          <div class="tile">
+            <div class="tile-label">Time to burn</div>
+            <div class="tile-value" id="ttbValue">--:--</div>
+          </div>
+        </section>
+        <p class="hint" id="lineHint"></p>
+      </div>
     </section>
   </main>
+
+  <div class="dots" id="screenDots">
+    <span class="dot active" data-screen="0"></span>
+    <span class="dot" data-screen="1"></span>
+  </div>
+
+  <div id="timerModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Starttijd instellen</h2>
+        <button id="closeTimerModalBtn" aria-label="Sluiten">&times;</button>
+      </div>
+      <div class="settings-section">
+        <label class="row">Starttijd: <input type="time" id="timerTargetInput" step="1" /></label>
+        <div class="row">
+          <button id="saveTimerBtn">Opslaan</button>
+          <button id="clearTimerBtn" class="secondary">Wissen</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div id="settingsModal" class="modal hidden">
     <div class="modal-content">
