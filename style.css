@@ -140,18 +140,26 @@ input[type="time"] {
   background: #102944;
   border-radius: 12px;
   padding: 12px 14px;
+  min-width: 0; /* laat het grid-item krimpen i.p.v. dat nowrap-tekst het uit laat puilen */
+  overflow: hidden;
 }
 .tile-tappable { cursor: pointer; }
-.tile-label { color: #8fb0d1; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
-.tile-value { font-size: 1.6rem; font-weight: 600; margin-top: 2px; }
+.tile-label {
+  color: #8fb0d1; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.tile-value {
+  font-size: 1.6rem; font-weight: 600; margin-top: 2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 .grid.cols-3 .tile-value { font-size: 1.3rem; }
-.tile-value.prompt { font-size: 0.9rem; font-weight: 600; color: #4aa3ff; }
+.tile-value.prompt { font-size: 0.9rem; font-weight: 600; color: #4aa3ff; white-space: normal; }
 
-.tile-lg { padding: 26px 16px; }
-.tile-lg .tile-label { font-size: 0.9rem; }
+.tile-lg { padding: 26px 16px; min-height: 148px; }
+.tile-lg .tile-label { font-size: 0.93rem; } /* max die "Course to Steer" nog op 1 regel houdt */
 .tile-lg .tile-value { font-size: 2.7rem; }
 
-.tile-sm { padding: 8px 12px; }
+.tile-sm { padding: 8px 12px; min-height: 62px; }
 .tile-sm .tile-label { font-size: 0.68rem; }
 .tile-sm .tile-value { font-size: 1.1rem; }
 .grid.cols-3 .tile-sm .tile-value { font-size: 1.1rem; }
