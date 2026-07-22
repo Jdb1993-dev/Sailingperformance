@@ -156,7 +156,7 @@ input[type="time"] {
 .tile-value.prompt { font-size: 0.9rem; font-weight: 600; color: #4aa3ff; white-space: normal; }
 
 .tile-lg { padding: 26px 16px; min-height: 148px; }
-.tile-lg .tile-label { font-size: 0.93rem; } /* max die "Course to Steer" nog op 1 regel houdt */
+.tile-lg .tile-label { font-size: 0.7rem; } /* past "Course to Steer" met marge op 1 regel, ook op smalle telefoons (320px) */
 .tile-lg .tile-value { font-size: 2.7rem; }
 
 .tile-sm { padding: 8px 12px; min-height: 62px; }
