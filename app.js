@@ -681,6 +681,7 @@ function render() {
     ctsEl.classList.add("prompt");
     dtwEl.classList.add("prompt");
     el("vmgValue").textContent = "-- kn";
+    el("etaValue").textContent = "--";
     clearVmgTrend();
   } else {
     ctsEl.classList.remove("prompt");
@@ -697,14 +698,28 @@ function render() {
         const vmg = lastSpeedKn * Math.cos(toRad(cts - lastCourseDeg));
         el("vmgValue").textContent = vmg.toFixed(1) + " kn";
         updateVmgTrend(vmg);
+
+        // ETA = aankomsttijd bij de boei op basis van je huidige closing-speed (VMG).
+        // De afstand tot de boei neemt af met VMG, dus tijd = afstand / VMG. Alleen
+        // zinvol als je echt inloopt; anders (VMG ~0 of negatief) geen bruikbare ETA.
+        if (vmg > 0.2) {
+          const hoursToGo = distM / NM_IN_METERS / vmg;
+          const eta = new Date(Date.now() + hoursToGo * 3600_000);
+          el("etaValue").textContent =
+            String(eta.getHours()).padStart(2, "0") + ":" + String(eta.getMinutes()).padStart(2, "0");
+        } else {
+          el("etaValue").textContent = "--";
+        }
       } else {
         el("vmgValue").textContent = "-- kn";
+        el("etaValue").textContent = "--";
         clearVmgTrend();
       }
     } else {
       ctsEl.textContent = "--°";
       dtwEl.textContent = "-- nm";
       el("vmgValue").textContent = "-- kn";
+      el("etaValue").textContent = "--";
       clearVmgTrend();
     }
   }

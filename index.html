@@ -27,40 +27,40 @@
   <main id="screens" class="screens">
     <section class="screen" id="screenPerformance">
       <div class="screen-inner">
-        <section class="top-row">
-          <div class="hero-card">
-            <div class="hero-value" id="perfValue">--%</div>
-            <div class="hero-label">Performance</div>
-            <div class="perf-bar-track"><div class="perf-bar-fill" id="perfBarFill"></div></div>
-          </div>
-          <div class="hero-card">
-            <div class="hero-value" id="sogValue">-- kn</div>
-            <div class="hero-label">Snelheid (GPS)</div>
-          </div>
-        </section>
-
-        <section class="wide-card">
-          <div class="wide-value" id="cogValue">--&deg;</div>
-          <div class="wide-label">Koers (COG)</div>
-        </section>
-
         <section class="grid">
           <div class="tile">
-            <div class="tile-label">Target (polar)</div>
+            <div class="tile-label">Target (Polar)</div>
             <div class="tile-value" id="targetValue">-- kn</div>
           </div>
           <div class="tile">
-            <div class="tile-label">VMG naar boei</div>
+            <div class="tile-label">Actual speed</div>
+            <div class="tile-value" id="sogValue">-- kn</div>
+          </div>
+          <div class="tile">
+            <div class="tile-label">Performance</div>
+            <div class="tile-value" id="perfValue">--%</div>
+            <div class="perf-bar-track"><div class="perf-bar-fill" id="perfBarFill"></div></div>
+          </div>
+          <div class="tile">
+            <div class="tile-label">VMG</div>
             <div class="tile-trend" id="vmgTrend"></div>
             <div class="tile-value" id="vmgValue">-- kn</div>
           </div>
           <div class="tile tile-tappable" id="ctsTile">
-            <div class="tile-label">Course to steer</div>
+            <div class="tile-label">Course to Steer</div>
             <div class="tile-value" id="ctsValue">--&deg;</div>
           </div>
+          <div class="tile">
+            <div class="tile-label">Koers (COG)</div>
+            <div class="tile-value" id="cogValue">--&deg;</div>
+          </div>
           <div class="tile tile-tappable" id="dtwTile">
-            <div class="tile-label">Distance to WP</div>
+            <div class="tile-label">DTW</div>
             <div class="tile-value" id="dtwValue">-- nm</div>
+          </div>
+          <div class="tile">
+            <div class="tile-label">ETA</div>
+            <div class="tile-value" id="etaValue">--</div>
           </div>
         </section>
 
@@ -70,11 +70,11 @@
             <div class="tile-value" id="twaValue">--&deg;</div>
           </div>
           <div class="tile">
-            <div class="tile-label">Wind (TWS)</div>
+            <div class="tile-label">TWS</div>
             <div class="tile-value" id="twsValue">-- kn</div>
           </div>
           <div class="tile">
-            <div class="tile-label">Windrichting</div>
+            <div class="tile-label">True wind</div>
             <div class="tile-value" id="twdValue">--&deg;</div>
           </div>
         </section>
