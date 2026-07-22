@@ -6,8 +6,10 @@ const SPOT_STORAGE_KEY = "sailing-wind-spot-v1";
 const TIMER_STORAGE_KEY = "sailing-race-target-v1";
 const LINE_STORAGE_KEY = "sailing-startline-v1";
 const WAYPOINT_STORAGE_KEY = "sailing-waypoint-v1";
+const LASTFIX_STORAGE_KEY = "sailing-lastfix-v1";
 const NM_IN_METERS = 1852;
 const WAYPOINT_LIST_MAX = 200; // voorkomt duizenden DOM-nodes bij een landelijk GPX-bestand
+const MAX_DELTA_DT_S = 10; // grotere tijdsprong tussen fixes = geen continu spoor, niet uit delta afleiden
 
 let polar = loadPolar();
 let manualWind = null; // {tws, twd} when manual override active
@@ -18,6 +20,8 @@ let lastFix = null; // {lat, lon, time}
 let lastCourseDeg = null; // 2s gemiddelde koers, gebruikt voor weergave en TWA
 let lastSpeedKn = null; // 2s gemiddelde snelheid, gebruikt voor weergave en performance%
 let fixBuffer = []; // recente {time, speedKn, courseDeg} samples, voor het 2s voortschrijdend gemiddelde
+let lastFixSavedAt = 0; // throttle voor het wegschrijven van de laatste positie naar localStorage
+let haveLiveFix = false; // true zodra er deze sessie een echte GPS-fix binnen is (niet enkel hersteld)
 let raceTargetTimeStr = loadRaceTarget(); // "HH:MM:SS" of null
 let raceLine = loadRaceLine(); // {a: {lat,lon}|null, b: {lat,lon}|null}
 let waypoints = []; // alle boeien uit waypoints.gpx: {name, lat, lon}
@@ -425,17 +429,22 @@ function onPosition(pos) {
   if (lastFix) {
     const dist = haversineMeters(lastFix.lat, lastFix.lon, latitude, longitude);
     const dt = (now - lastFix.time) / 1000;
-    if (dist > 5) {
+    // Alleen snelheid/koers uit het positieverschil afleiden bij een continu spoor:
+    // een grote tijdsprong (bv. een herstelde of OS-gecachte positie na een pauze)
+    // zou anders een onzinnige snelheidspiek geven.
+    if (dist > 5 && dt > 0 && dt < MAX_DELTA_DT_S) {
       if (instCourseDeg == null) {
         instCourseDeg = bearingDeg(lastFix.lat, lastFix.lon, latitude, longitude);
       }
-      if (instSpeedKn == null && dt > 0) {
+      if (instSpeedKn == null) {
         instSpeedKn = (dist / dt) * MS_TO_KN;
       }
     }
   }
 
   lastFix = { lat: latitude, lon: longitude, time: now };
+  haveLiveFix = true;
+  saveLastFix();
 
   if (instSpeedKn != null || instCourseDeg != null) {
     fixBuffer.push({ time: now, speedKn: instSpeedKn, courseDeg: instCourseDeg });
@@ -458,6 +467,33 @@ function onPosition(pos) {
   render();
 }
 
+// Laatste positie bewaren (max 1x/10s) zodat we bij de volgende keer openen meteen
+// iets kunnen tonen terwijl de echte GPS-fix nog binnenkomt. Timestamp gaat mee zodat
+// de delta-beveiliging hierboven een oude herstelde positie herkent en negeert.
+function saveLastFix() {
+  if (!lastFix || Date.now() - lastFixSavedAt < 10_000) return;
+  lastFixSavedAt = Date.now();
+  try {
+    localStorage.setItem(
+      LASTFIX_STORAGE_KEY,
+      JSON.stringify({ lat: lastFix.lat, lon: lastFix.lon, time: lastFix.time })
+    );
+  } catch {}
+}
+
+function restoreLastFix() {
+  try {
+    const raw = localStorage.getItem(LASTFIX_STORAGE_KEY);
+    if (!raw) return;
+    const p = JSON.parse(raw);
+    if (typeof p.lat === "number" && typeof p.lon === "number") {
+      // Echte (oude) timestamp behouden, niet Date.now(): dan ziet onPosition de grote
+      // tijdsprong en leidt er geen valse snelheid uit af.
+      lastFix = { lat: p.lat, lon: p.lon, time: typeof p.time === "number" ? p.time : 0 };
+    }
+  } catch {}
+}
+
 function onPositionError(err) {
   el("gpsStatus").textContent = "GPS: " + err.message;
   el("gpsStatus").className = "error";
@@ -469,14 +505,15 @@ function onPositionError(err) {
 let gpsWatchId = null;
 
 // Meteen een eventueel gecachte positie ophalen: sneller dan wachten op de eerste
-// hoge-nauwkeurigheid fix van watchPosition, vooral net na het terugkomen uit de
-// achtergrond (waar het OS de GPS-chip kan hebben uitgezet).
+// verse fix van watchPosition. maximumAge: Infinity betekent "geef me direct elke
+// positie die het OS al kent" - als de telefoon net GPS gebruikte (bv. in Maps) komt
+// die zo goed als instant binnen, terwijl de watch ondertussen een verse fix zoekt.
 function requestQuickGpsFix() {
   if (!("geolocation" in navigator)) return;
   navigator.geolocation.getCurrentPosition(onPosition, () => {}, {
-    enableHighAccuracy: false,
-    maximumAge: 120_000,
-    timeout: 5000,
+    enableHighAccuracy: true,
+    maximumAge: Infinity,
+    timeout: 10_000,
   });
 }
 
@@ -497,6 +534,10 @@ function startGps() {
     el("gpsStatus").textContent = "GPS: niet beschikbaar";
     el("gpsStatus").className = "error";
     return;
+  }
+  if (!haveLiveFix) {
+    el("gpsStatus").textContent = lastFix ? "GPS: laatste positie, zoeken..." : "GPS: zoeken...";
+    el("gpsStatus").className = "warn";
   }
   requestQuickGpsFix();
   startGpsWatch();
@@ -924,6 +965,8 @@ el("gpsPermissionModal").addEventListener("click", (e) => {
 });
 
 // --- boot ---
+restoreLastFix(); // toon direct de laatst bekende positie terwijl de verse fix binnenkomt
+render();
 startGps();
 pollWind();
 renderRaceScreen();
