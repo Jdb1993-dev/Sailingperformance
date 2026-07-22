@@ -28,52 +28,55 @@
     <section class="screen" id="screenPerformance">
       <div class="screen-inner">
         <section class="grid">
-          <div class="tile">
+          <div class="tile tile-lg">
             <div class="tile-label">Actual speed</div>
             <div class="tile-value" id="sogValue">-- kn</div>
           </div>
-          <div class="tile">
+          <div class="tile tile-lg">
             <div class="tile-label">Target (Polar)</div>
             <div class="tile-value" id="targetValue">-- kn</div>
           </div>
-          <div class="tile">
+          <div class="tile tile-lg">
             <div class="tile-label">Performance</div>
             <div class="tile-value" id="perfValue">--%</div>
             <div class="perf-bar-track"><div class="perf-bar-fill" id="perfBarFill"></div></div>
           </div>
-          <div class="tile">
+          <div class="tile tile-lg">
             <div class="tile-label">VMG</div>
             <div class="tile-trend" id="vmgTrend"></div>
             <div class="tile-value" id="vmgValue">-- kn</div>
           </div>
-          <div class="tile">
+          <div class="tile tile-lg">
             <div class="tile-label">Koers (COG)</div>
             <div class="tile-value" id="cogValue">--&deg;</div>
           </div>
-          <div class="tile tile-tappable" id="ctsTile">
+          <div class="tile tile-lg tile-tappable" id="ctsTile">
             <div class="tile-label">Course to Steer</div>
             <div class="tile-value" id="ctsValue">--&deg;</div>
           </div>
-          <div class="tile tile-tappable" id="dtwTile">
+        </section>
+
+        <section class="grid">
+          <div class="tile tile-sm tile-tappable" id="dtwTile">
             <div class="tile-label">DTW</div>
             <div class="tile-value" id="dtwValue">-- nm</div>
           </div>
-          <div class="tile">
+          <div class="tile tile-sm">
             <div class="tile-label">ETA</div>
             <div class="tile-value" id="etaValue">--</div>
           </div>
         </section>
 
         <section class="grid cols-3">
-          <div class="tile">
+          <div class="tile tile-sm">
             <div class="tile-label">TWA</div>
             <div class="tile-value" id="twaValue">--&deg;</div>
           </div>
-          <div class="tile">
+          <div class="tile tile-sm">
             <div class="tile-label">TWS</div>
             <div class="tile-value" id="twsValue">-- kn</div>
           </div>
-          <div class="tile">
+          <div class="tile tile-sm">
             <div class="tile-label">True wind</div>
             <div class="tile-value" id="twdValue">--&deg;</div>
           </div>

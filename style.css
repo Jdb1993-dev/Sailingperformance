@@ -146,6 +146,17 @@ input[type="time"] {
 .tile-value { font-size: 1.6rem; font-weight: 600; margin-top: 2px; }
 .grid.cols-3 .tile-value { font-size: 1.3rem; }
 .tile-value.prompt { font-size: 0.9rem; font-weight: 600; color: #4aa3ff; }
+
+.tile-lg { padding: 16px 14px; }
+.tile-lg .tile-label { font-size: 0.8rem; }
+.tile-lg .tile-value { font-size: 2.1rem; }
+
+.tile-sm { padding: 8px 12px; }
+.tile-sm .tile-label { font-size: 0.68rem; }
+.tile-sm .tile-value { font-size: 1.1rem; }
+.grid.cols-3 .tile-sm .tile-value { font-size: 1.1rem; }
+
+.tile-value.prompt { font-size: 0.9rem; }
 .tile-trend { font-size: 0.75rem; font-weight: 600; height: 0.9rem; line-height: 0.9rem; }
 .tile-trend.up { color: #3cc26e; }
 .tile-trend.down { color: #e74c3c; }
