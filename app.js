@@ -322,6 +322,17 @@ function getRaceTargetMs() {
   return new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, m, s || 0, 0).getTime();
 }
 
+// Tijd altijd in de Nederlandse tijdzone tonen (met automatische zomer-/wintertijd),
+// ongeacht hoe de tijdzone van het toestel zelf is ingesteld.
+function formatTimeNL(date) {
+  return new Intl.DateTimeFormat("nl-NL", {
+    timeZone: "Europe/Amsterdam",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(date);
+}
+
 function formatCountdown(totalSeconds) {
   const clamped = Math.max(0, Math.ceil(totalSeconds));
   const h = Math.floor(clamped / 3600);
@@ -705,8 +716,7 @@ function render() {
         if (vmg > 0.2) {
           const hoursToGo = distM / NM_IN_METERS / vmg;
           const eta = new Date(Date.now() + hoursToGo * 3600_000);
-          el("etaValue").textContent =
-            String(eta.getHours()).padStart(2, "0") + ":" + String(eta.getMinutes()).padStart(2, "0");
+          el("etaValue").textContent = formatTimeNL(eta);
         } else {
           el("etaValue").textContent = "--";
         }
