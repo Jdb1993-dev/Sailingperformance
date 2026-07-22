@@ -160,11 +160,14 @@ function renderWaypointList(filterText) {
 // als er geen boei is - dan staat de "kies boei"-prompt in de CTS/DTW-tegels.
 function updateWaypointChip() {
   const chip = el("waypointChip");
+  const label = el("waypointNavLabel");
   if (selectedWaypoint) {
     el("waypointChipName").textContent = selectedWaypoint.name;
     chip.classList.remove("hidden");
+    label.classList.remove("hidden");
   } else {
     chip.classList.add("hidden");
+    label.classList.add("hidden");
   }
 }
 
