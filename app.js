@@ -27,6 +27,7 @@ let lineMarkerA = null;
 let lineMarkerB = null;
 let lineMapLayer = null; // polyline tussen A en B
 let mapActiveMarker = "a"; // welk punt de volgende tik op de kaart plaatst
+let gpsPermissionModalDismissed = false;
 
 const el = (id) => document.getElementById(id);
 
@@ -452,12 +453,43 @@ function onPosition(pos) {
 
   el("gpsStatus").textContent = "GPS: actief";
   el("gpsStatus").className = "";
+  el("gpsPermissionModal").classList.add("hidden");
+  gpsPermissionModalDismissed = false;
   render();
 }
 
 function onPositionError(err) {
   el("gpsStatus").textContent = "GPS: " + err.message;
   el("gpsStatus").className = "error";
+  if (err.code === err.PERMISSION_DENIED && !gpsPermissionModalDismissed) {
+    el("gpsPermissionModal").classList.remove("hidden");
+  }
+}
+
+let gpsWatchId = null;
+
+// Meteen een eventueel gecachte positie ophalen: sneller dan wachten op de eerste
+// hoge-nauwkeurigheid fix van watchPosition, vooral net na het terugkomen uit de
+// achtergrond (waar het OS de GPS-chip kan hebben uitgezet).
+function requestQuickGpsFix() {
+  if (!("geolocation" in navigator)) return;
+  navigator.geolocation.getCurrentPosition(onPosition, () => {}, {
+    enableHighAccuracy: false,
+    maximumAge: 120_000,
+    timeout: 5000,
+  });
+}
+
+function startGpsWatch() {
+  if (!("geolocation" in navigator)) return;
+  if (gpsWatchId != null) {
+    navigator.geolocation.clearWatch(gpsWatchId);
+  }
+  gpsWatchId = navigator.geolocation.watchPosition(onPosition, onPositionError, {
+    enableHighAccuracy: true,
+    maximumAge: 2000,
+    timeout: 15000,
+  });
 }
 
 function startGps() {
@@ -466,12 +498,20 @@ function startGps() {
     el("gpsStatus").className = "error";
     return;
   }
-  navigator.geolocation.watchPosition(onPosition, onPositionError, {
-    enableHighAccuracy: true,
-    maximumAge: 2000,
-    timeout: 15000,
-  });
+  requestQuickGpsFix();
+  startGpsWatch();
 }
+
+// Beide schermen (performance + racetimer) delen dezelfde GPS-status (lastFix/lastCourseDeg/
+// lastSpeedKn) - er wordt maar één keer naar GPS gezocht, niet per scherm. Bij het wisselen
+// van app/tabblad kan het OS de GPS-chip en/of de watchPosition-koppeling stilzwijgend hebben
+// stopgezet; bij terugkomst dus meteen een snelle fix proberen en de watch herstarten.
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") {
+    requestQuickGpsFix();
+    startGpsWatch();
+  }
+});
 
 async function pollWind() {
   if (manualWind) {
@@ -856,6 +896,31 @@ dotEls.forEach((dot) => {
     const idx = Number(dot.dataset.screen);
     screensEl.scrollTo({ left: idx * screensEl.clientWidth, behavior: "smooth" });
   });
+});
+
+// --- GPS-toestemming modal ---
+
+(function setupGpsPermissionUi() {
+  const ua = navigator.userAgent || "";
+  const isIOS = /iPhone|iPad|iPod/.test(ua);
+  el("gpsInstructionsIOS").classList.toggle("hidden", !isIOS);
+  el("gpsInstructionsAndroid").classList.toggle("hidden", isIOS);
+})();
+
+el("closeGpsModalBtn").addEventListener("click", () => {
+  gpsPermissionModalDismissed = true;
+  el("gpsPermissionModal").classList.add("hidden");
+});
+el("retryGpsBtn").addEventListener("click", () => {
+  el("gpsPermissionModal").classList.add("hidden");
+  gpsPermissionModalDismissed = false; // laat 'm weer verschijnen als het opnieuw mislukt
+  startGps();
+});
+el("gpsPermissionModal").addEventListener("click", (e) => {
+  if (e.target.id === "gpsPermissionModal") {
+    gpsPermissionModalDismissed = true;
+    el("gpsPermissionModal").classList.add("hidden");
+  }
 });
 
 // --- boot ---

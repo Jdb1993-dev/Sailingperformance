@@ -2,7 +2,7 @@
 
 Webapp (PWA) die op je telefoon laat zien hoe goed een zeilboot het doet t.o.v. het polar diagram:
 
-- **GPS** (telefoon): actuele snelheid (SOG) en koers (COG).
+- **GPS** (telefoon): actuele snelheid (SOG) en koers (COG). Eén gedeelde GPS-verbinding voor de hele app (niet per scherm); bij terugkomst uit de achtergrond wordt meteen een snelle (mogelijk iets verouderde) positie opgehaald en de verbinding herstart, i.p.v. te wachten op een verse hoge-nauwkeurigheid fix. Bij een geweigerde locatietoestemming volgt een pop-up met (Android/iOS-specifieke) instructies + een "Probeer opnieuw"-knop.
 - **Wind**: live van [actuelewind.nl](https://www.actuelewind.nl), elke minuut vernieuwd. Standaard spot *Trintelhaven Houtribdijk*, maar in Instellingen kiezen uit alle (54) spots van de site.
 - **Polar diagram**: standaard de **Piranha (MG 26, NED 1926)**, overgenomen uit het officiele ORC Club Certificate. Upload je eigen **ORC-certificaat (PDF)** in Instellingen voor de polar van jouw eigen schip. Ook handmatig volledig aanpasbaar.
 - **Performance %**: 2-seconden-gemiddelde GPS-snelheid gedeeld door de target-snelheid uit de polar voor de actuele TWA/TWS (koers/snelheid worden gemiddeld om GPS-ruis te dempen).
@@ -87,3 +87,5 @@ De keuze wordt onthouden (localStorage). Vervang `waypoints.gpx` door je eigen e
 - De standaard polar is die van de Piranha (MG 26) — upload je eigen ORC-certificaat als je een andere boot vaart.
 - actuelewind.nl is een onofficiële databron (geen publieke API) — bij wijzigingen aan hun site kan `/api/wind` stuk gaan.
 - Het weerstation zelf update ongeveer elke 10 minuten; de app polt elke minuut zodat je nooit langer dan nodig op verse data wacht, maar de waarde verandert niet elke minuut.
+- Een website kan niet automatisch naar de systeeminstellingen van een telefoon springen (browsers staan dat niet toe) — bij geweigerde locatietoestemming toont de app dus alleen instructies + een "Probeer opnieuw"-knop, geen directe deeplink naar Instellingen.
+- Als het OS de GPS-chip uitzet zodra de app/telefoon lang genoeg in de achtergrond staat (bv. scherm uit), duurt het na terugkomst alsnog even voor er weer een verse fix is — de app probeert dit te verkorten door meteen een (eventueel iets verouderde) gecachte positie te tonen en de GPS-verbinding te herstarten, maar kan het opnieuw "warm worden" van de GPS-chip zelf niet versnellen.

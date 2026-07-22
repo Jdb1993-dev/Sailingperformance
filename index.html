@@ -118,6 +118,27 @@
     <span class="dot" data-screen="1"></span>
   </div>
 
+  <div id="gpsPermissionModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>GPS-toegang nodig</h2>
+        <button id="closeGpsModalBtn" aria-label="Sluiten">&times;</button>
+      </div>
+      <p class="hint">Deze app heeft locatietoegang nodig voor snelheid, koers en de startlijn/boei-berekeningen. Je hebt dat nu niet toegestaan. Een website kan dit niet automatisch voor je aanzetten (dat mag een browser niet toestaan) &mdash; dit moet je zelf even doen:</p>
+      <div id="gpsInstructionsIOS" class="hint">
+        <strong>iPhone/iPad (Safari):</strong>
+        Instellingen &rarr; Privacy en beveiliging &rarr; Locatievoorzieningen &rarr; Safari-websites (of de naam van deze app, als je 'm op je beginscherm hebt gezet) &rarr; zet op "Vragen" of "Toestaan".
+      </div>
+      <div id="gpsInstructionsAndroid" class="hint">
+        <strong>Android (Chrome):</strong>
+        Tik op het slotje/i-icoon links van de adresbalk &rarr; Machtigingen &rarr; Locatie &rarr; Toestaan. (Of: Chrome-menu &rarr; Instellingen &rarr; Site-instellingen &rarr; Locatie.)
+      </div>
+      <div class="row">
+        <button id="retryGpsBtn">Probeer opnieuw</button>
+      </div>
+    </div>
+  </div>
+
   <div id="timerModal" class="modal hidden">
     <div class="modal-content">
       <div class="modal-header">
