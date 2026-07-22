@@ -84,7 +84,7 @@ header h1 { font-size: 1.1rem; margin: 0; font-weight: 600; letter-spacing: 0.02
   background: #08182b; border: 1px solid #1b3a5c; color: #eaf2fb;
   border-radius: 6px; padding: 8px 10px; font-size: 0.95rem;
 }
-.waypoint-list { margin-top: 12px; max-height: 55vh; overflow-y: auto; }
+.waypoint-list { margin-top: 12px; height: 55vh; overflow-y: auto; }
 .waypoint-item {
   padding: 10px 8px; border-bottom: 1px solid #1b3a5c; font-size: 0.95rem; cursor: pointer;
 }
