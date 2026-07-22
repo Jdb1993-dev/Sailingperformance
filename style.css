@@ -150,6 +150,10 @@ input[type="time"] {
 }
 .tile-label { color: #8fb0d1; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
 .tile-value { font-size: 1.6rem; font-weight: 600; margin-top: 2px; }
+.tile-trend { font-size: 0.75rem; font-weight: 600; height: 0.9rem; line-height: 0.9rem; }
+.tile-trend.up { color: #3cc26e; }
+.tile-trend.down { color: #e74c3c; }
+.tile-trend.flat { color: #8fb0d1; }
 
 .status {
   display: flex;

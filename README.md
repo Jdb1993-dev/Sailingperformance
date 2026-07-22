@@ -8,7 +8,7 @@ Webapp (PWA) die op je telefoon laat zien hoe goed een zeilboot het doet t.o.v. 
 - **Polar diagram**: standaard de **Piranha (MG 26, NED 1926)**, overgenomen uit het officiele ORC Club Certificate. Upload je eigen **ORC-certificaat (PDF)** in Instellingen voor de polar van jouw eigen schip. Ook handmatig volledig aanpasbaar.
 - **Performance %**: 2-seconden-gemiddelde GPS-snelheid gedeeld door de target-snelheid uit de polar voor de actuele TWA/TWS (koers/snelheid worden gemiddeld om GPS-ruis te dempen).
 - **Racetimer + startlijn**: swipe naar het tweede scherm voor een aftel-klok naar een instelbare starttijd, en een startlijn-tool (twee gepinde punten) die de afstand tot de lijn op je huidige koers en de "time to burn" (hoeveel tijd je te veel/te weinig hebt om precies op tijd op de lijn te zijn) berekent.
-- **Course to steer / Distance to waypoint**: tik op de boei-kaart (eerste scherm) om een boei te zoeken en selecteren uit `waypoints.gpx`. Toont de kompaskoers en afstand (nm) in rechte lijn naar die boei.
+- **Course to steer / Distance to waypoint / VMG**: tik op de boei-kaart (eerste scherm) om een boei te zoeken en selecteren uit `waypoints.gpx`. Toont de kompaskoers en afstand (nm) in rechte lijn naar die boei, plus de **VMG naar de boei** (snelheid richting de boei = `SOG × cos(peiling − COG)`; positief = je loopt in, negatief = je loopt eraf) met daarboven een klein teken of die VMG t.o.v. ~10s geleden beter (▲), slechter (▼) of gelijk (●) is.
 
 ## Waarom een server nodig is
 

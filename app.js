@@ -10,6 +10,8 @@ const LASTFIX_STORAGE_KEY = "sailing-lastfix-v1";
 const NM_IN_METERS = 1852;
 const WAYPOINT_LIST_MAX = 200; // voorkomt duizenden DOM-nodes bij een landelijk GPX-bestand
 const MAX_DELTA_DT_S = 10; // grotere tijdsprong tussen fixes = geen continu spoor, niet uit delta afleiden
+const VMG_TREND_WINDOW_MS = 10_000; // VMG vergelijken met ~10 seconden geleden
+const VMG_TREND_THRESHOLD_KN = 0.1; // kleiner verschil = "gelijk" (dempt GPS-ruis)
 
 let polar = loadPolar();
 let manualWind = null; // {tws, twd} when manual override active
@@ -22,6 +24,7 @@ let lastSpeedKn = null; // 2s gemiddelde snelheid, gebruikt voor weergave en per
 let fixBuffer = []; // recente {time, speedKn, courseDeg} samples, voor het 2s voortschrijdend gemiddelde
 let lastFixSavedAt = 0; // throttle voor het wegschrijven van de laatste positie naar localStorage
 let haveLiveFix = false; // true zodra er deze sessie een echte GPS-fix binnen is (niet enkel hersteld)
+let vmgHistory = []; // recente {time, vmg} samples voor de 10s-trend van VMG-naar-boei
 let raceTargetTimeStr = loadRaceTarget(); // "HH:MM:SS" of null
 let raceLine = loadRaceLine(); // {a: {lat,lon}|null, b: {lat,lon}|null}
 let waypoints = []; // alle boeien uit waypoints.gpx: {name, lat, lon}
@@ -602,6 +605,53 @@ function perfColor(pct) {
   return "#4aa3ff";
 }
 
+function clearVmgTrend() {
+  vmgHistory = [];
+  const t = el("vmgTrend");
+  t.textContent = "";
+  t.className = "tile-trend";
+}
+
+// Houdt een rollend logje van VMG bij en toont of de VMG t.o.v. ~10s geleden beter,
+// slechter of ongeveer gelijk is. Pas als er ~10s historie is verschijnt er een teken.
+function updateVmgTrend(vmg) {
+  const now = Date.now();
+  vmgHistory.push({ time: now, vmg });
+  vmgHistory = vmgHistory.filter((s) => now - s.time <= VMG_TREND_WINDOW_MS + 3000);
+
+  const t = el("vmgTrend");
+  const oldest = vmgHistory[0];
+  if (!oldest || now - oldest.time < VMG_TREND_WINDOW_MS - 2000) {
+    t.textContent = "";
+    t.className = "tile-trend";
+    return;
+  }
+
+  // sample dat het dichtst bij 10s geleden ligt
+  const targetTime = now - VMG_TREND_WINDOW_MS;
+  let past = oldest;
+  let best = Infinity;
+  for (const s of vmgHistory) {
+    const d = Math.abs(s.time - targetTime);
+    if (d < best) {
+      best = d;
+      past = s;
+    }
+  }
+
+  const diff = vmg - past.vmg;
+  if (diff > VMG_TREND_THRESHOLD_KN) {
+    t.textContent = "▲ beter";
+    t.className = "tile-trend up";
+  } else if (diff < -VMG_TREND_THRESHOLD_KN) {
+    t.textContent = "▼ slechter";
+    t.className = "tile-trend down";
+  } else {
+    t.textContent = "● gelijk";
+    t.className = "tile-trend flat";
+  }
+}
+
 function render() {
   el("sogValue").textContent = lastSpeedKn != null ? lastSpeedKn.toFixed(1) + " kn" : "-- kn";
   el("cogValue").textContent = lastCourseDeg != null ? Math.round(lastCourseDeg) + "°" : "--°";
@@ -611,9 +661,22 @@ function render() {
     const cts = bearingDeg(lastFix.lat, lastFix.lon, selectedWaypoint.lat, selectedWaypoint.lon);
     el("ctsValue").textContent = Math.round(cts) + "°";
     el("dtwValue").textContent = (distM / NM_IN_METERS).toFixed(2) + " nm";
+
+    // VMG naar de boei = component van je snelheid richting de boei: SOG x cos(peiling - COG).
+    // Positief = je loopt in op de boei, negatief = je loopt eraf.
+    if (lastSpeedKn != null && lastCourseDeg != null) {
+      const vmg = lastSpeedKn * Math.cos(toRad(cts - lastCourseDeg));
+      el("vmgValue").textContent = vmg.toFixed(1) + " kn";
+      updateVmgTrend(vmg);
+    } else {
+      el("vmgValue").textContent = "-- kn";
+      clearVmgTrend();
+    }
   } else {
     el("ctsValue").textContent = "--°";
     el("dtwValue").textContent = "-- nm";
+    el("vmgValue").textContent = "-- kn";
+    clearVmgTrend();
   }
 
   if (lastWind) {
