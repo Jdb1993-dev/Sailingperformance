@@ -14,36 +14,56 @@
 <body>
   <header>
     <h1>Piranha (MG 26)</h1>
-    <button id="settingsBtn" aria-label="Instellingen">&#9881;</button>
+    <div class="header-right">
+      <button id="waypointChip" class="waypoint-chip hidden" aria-label="Wijzig boei">
+        <span id="waypointChipName">--</span>
+        <span class="chip-dots">&#8942;</span>
+      </button>
+      <button id="settingsBtn" aria-label="Instellingen">&#9881;</button>
+    </div>
   </header>
 
   <main id="screens" class="screens">
     <section class="screen" id="screenPerformance">
       <div class="screen-inner">
-        <section class="perf-card">
-          <div class="perf-value" id="perfValue">--%</div>
-          <div class="perf-label">performance t.o.v. polar</div>
-          <div class="perf-bar-track"><div class="perf-bar-fill" id="perfBarFill"></div></div>
+        <section class="top-row">
+          <div class="hero-card">
+            <div class="hero-value" id="perfValue">--%</div>
+            <div class="hero-label">Performance</div>
+            <div class="perf-bar-track"><div class="perf-bar-fill" id="perfBarFill"></div></div>
+          </div>
+          <div class="hero-card">
+            <div class="hero-value" id="sogValue">-- kn</div>
+            <div class="hero-label">Snelheid (GPS)</div>
+          </div>
         </section>
 
-        <section class="waypoint-card" id="waypointCard">
-          <div class="waypoint-name" id="waypointName">Kies boei&hellip;</div>
-          <div class="waypoint-hint">tik om een boei te selecteren</div>
+        <section class="wide-card">
+          <div class="wide-value" id="cogValue">--&deg;</div>
+          <div class="wide-label">Koers (COG)</div>
         </section>
 
         <section class="grid">
-          <div class="tile">
-            <div class="tile-label">Snelheid (GPS)</div>
-            <div class="tile-value" id="sogValue">-- kn</div>
-          </div>
           <div class="tile">
             <div class="tile-label">Target (polar)</div>
             <div class="tile-value" id="targetValue">-- kn</div>
           </div>
           <div class="tile">
-            <div class="tile-label">Koers (COG)</div>
-            <div class="tile-value" id="cogValue">--&deg;</div>
+            <div class="tile-label">VMG naar boei</div>
+            <div class="tile-trend" id="vmgTrend"></div>
+            <div class="tile-value" id="vmgValue">-- kn</div>
           </div>
+          <div class="tile tile-tappable" id="ctsTile">
+            <div class="tile-label">Course to steer</div>
+            <div class="tile-value" id="ctsValue">--&deg;</div>
+          </div>
+          <div class="tile tile-tappable" id="dtwTile">
+            <div class="tile-label">Distance to WP</div>
+            <div class="tile-value" id="dtwValue">-- nm</div>
+          </div>
+        </section>
+
+        <section class="grid cols-3">
           <div class="tile">
             <div class="tile-label">TWA</div>
             <div class="tile-value" id="twaValue">--&deg;</div>
@@ -55,19 +75,6 @@
           <div class="tile">
             <div class="tile-label">Windrichting</div>
             <div class="tile-value" id="twdValue">--&deg;</div>
-          </div>
-          <div class="tile">
-            <div class="tile-label">Course to steer</div>
-            <div class="tile-value" id="ctsValue">--&deg;</div>
-          </div>
-          <div class="tile">
-            <div class="tile-label">Distance to WP</div>
-            <div class="tile-value" id="dtwValue">-- nm</div>
-          </div>
-          <div class="tile">
-            <div class="tile-label">VMG naar boei</div>
-            <div class="tile-trend" id="vmgTrend"></div>
-            <div class="tile-value" id="vmgValue">-- kn</div>
           </div>
         </section>
 

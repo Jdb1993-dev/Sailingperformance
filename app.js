@@ -141,7 +141,7 @@ function renderWaypointList(filterText) {
     item.addEventListener("click", () => {
       selectedWaypoint = wp;
       saveSelectedWaypoint(wp);
-      el("waypointName").textContent = wp.name;
+      updateWaypointChip();
       el("waypointModal").classList.add("hidden");
       render();
     });
@@ -153,6 +153,18 @@ function renderWaypointList(filterText) {
     more.className = "waypoint-empty";
     more.textContent = `+${filtered.length - WAYPOINT_LIST_MAX} meer resultaten - verfijn je zoekopdracht.`;
     listEl.appendChild(more);
+  }
+}
+
+// Toont de gekozen boei als kleine chip rechtsboven (met "wijzig"-puntjes); verborgen
+// als er geen boei is - dan staat de "kies boei"-prompt in de CTS/DTW-tegels.
+function updateWaypointChip() {
+  const chip = el("waypointChip");
+  if (selectedWaypoint) {
+    el("waypointChipName").textContent = selectedWaypoint.name;
+    chip.classList.remove("hidden");
+  } else {
+    chip.classList.add("hidden");
   }
 }
 
@@ -656,27 +668,42 @@ function render() {
   el("sogValue").textContent = lastSpeedKn != null ? lastSpeedKn.toFixed(1) + " kn" : "-- kn";
   el("cogValue").textContent = lastCourseDeg != null ? Math.round(lastCourseDeg) + "°" : "--°";
 
-  if (selectedWaypoint && lastFix) {
-    const distM = haversineMeters(lastFix.lat, lastFix.lon, selectedWaypoint.lat, selectedWaypoint.lon);
-    const cts = bearingDeg(lastFix.lat, lastFix.lon, selectedWaypoint.lat, selectedWaypoint.lon);
-    el("ctsValue").textContent = Math.round(cts) + "°";
-    el("dtwValue").textContent = (distM / NM_IN_METERS).toFixed(2) + " nm";
+  const ctsEl = el("ctsValue");
+  const dtwEl = el("dtwValue");
 
-    // VMG naar de boei = component van je snelheid richting de boei: SOG x cos(peiling - COG).
-    // Positief = je loopt in op de boei, negatief = je loopt eraf.
-    if (lastSpeedKn != null && lastCourseDeg != null) {
-      const vmg = lastSpeedKn * Math.cos(toRad(cts - lastCourseDeg));
-      el("vmgValue").textContent = vmg.toFixed(1) + " kn";
-      updateVmgTrend(vmg);
+  if (!selectedWaypoint) {
+    // Geen boei gekozen: de CTS/DTW-tegels tonen de "kies boei"-prompt (tik = kiezen).
+    ctsEl.textContent = "tik om boei te kiezen";
+    dtwEl.textContent = "tik om boei te kiezen";
+    ctsEl.classList.add("prompt");
+    dtwEl.classList.add("prompt");
+    el("vmgValue").textContent = "-- kn";
+    clearVmgTrend();
+  } else {
+    ctsEl.classList.remove("prompt");
+    dtwEl.classList.remove("prompt");
+    if (lastFix) {
+      const distM = haversineMeters(lastFix.lat, lastFix.lon, selectedWaypoint.lat, selectedWaypoint.lon);
+      const cts = bearingDeg(lastFix.lat, lastFix.lon, selectedWaypoint.lat, selectedWaypoint.lon);
+      ctsEl.textContent = Math.round(cts) + "°";
+      dtwEl.textContent = (distM / NM_IN_METERS).toFixed(2) + " nm";
+
+      // VMG naar de boei = component van je snelheid richting de boei: SOG x cos(peiling - COG).
+      // Positief = je loopt in op de boei, negatief = je loopt eraf.
+      if (lastSpeedKn != null && lastCourseDeg != null) {
+        const vmg = lastSpeedKn * Math.cos(toRad(cts - lastCourseDeg));
+        el("vmgValue").textContent = vmg.toFixed(1) + " kn";
+        updateVmgTrend(vmg);
+      } else {
+        el("vmgValue").textContent = "-- kn";
+        clearVmgTrend();
+      }
     } else {
+      ctsEl.textContent = "--°";
+      dtwEl.textContent = "-- nm";
       el("vmgValue").textContent = "-- kn";
       clearVmgTrend();
     }
-  } else {
-    el("ctsValue").textContent = "--°";
-    el("dtwValue").textContent = "-- nm";
-    el("vmgValue").textContent = "-- kn";
-    clearVmgTrend();
   }
 
   if (lastWind) {
@@ -878,16 +905,17 @@ el("manualTwd").addEventListener("input", (e) => {
 
 // --- Boei / waypoint: bediening ---
 
-el("waypointCard").addEventListener("click", openWaypointPicker);
+// Boei kiezen/wijzigen kan via de chip rechtsboven én door op de CTS/DTW-tegels te tikken.
+el("waypointChip").addEventListener("click", openWaypointPicker);
+el("ctsTile").addEventListener("click", openWaypointPicker);
+el("dtwTile").addEventListener("click", openWaypointPicker);
 el("closeWaypointModalBtn").addEventListener("click", () => el("waypointModal").classList.add("hidden"));
 el("waypointModal").addEventListener("click", (e) => {
   if (e.target.id === "waypointModal") el("waypointModal").classList.add("hidden");
 });
 el("waypointSearchInput").addEventListener("input", (e) => renderWaypointList(e.target.value));
 
-if (selectedWaypoint) {
-  el("waypointName").textContent = selectedWaypoint.name;
-}
+updateWaypointChip();
 
 // --- Racetimer + startlijn: bediening ---
 

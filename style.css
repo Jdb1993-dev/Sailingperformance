@@ -1,5 +1,5 @@
 * { box-sizing: border-box; }
-.hidden { display: none; }
+.hidden { display: none !important; }
 html, body {
   margin: 0;
   padding: 0;
@@ -20,10 +20,20 @@ header {
   flex-shrink: 0;
 }
 header h1 { font-size: 1.1rem; margin: 0; font-weight: 600; letter-spacing: 0.02em; }
+.header-right { display: flex; align-items: center; gap: 6px; }
 #settingsBtn {
   background: none; border: none; color: #eaf2fb; font-size: 1.5rem; cursor: pointer; line-height: 1;
   padding: 4px 8px;
 }
+.waypoint-chip {
+  display: flex; align-items: center; gap: 6px;
+  background: #1b3a5c; color: #eaf2fb;
+  border: none; border-radius: 8px; padding: 6px 10px;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer; line-height: 1;
+  max-width: 45vw;
+}
+.waypoint-chip #waypointChipName { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.waypoint-chip .chip-dots { color: #8fb0d1; font-size: 1.1rem; }
 
 .screens {
   flex: 1 1 auto;
@@ -68,16 +78,6 @@ header h1 { font-size: 1.1rem; margin: 0; font-weight: 600; letter-spacing: 0.02
 .timer-value.done { color: #e74c3c; }
 .timer-hint { color: #8fb0d1; margin-top: 8px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
 
-.waypoint-card {
-  text-align: center;
-  background: #102944;
-  border-radius: 12px;
-  padding: 12px 14px;
-  margin-bottom: 16px;
-  cursor: pointer;
-}
-.waypoint-name { font-size: 1.3rem; font-weight: 600; }
-.waypoint-hint { color: #8fb0d1; margin-top: 2px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
 
 #waypointSearchInput {
   width: 100%; margin-top: 4px;
@@ -114,18 +114,20 @@ input[type="time"] {
   border-radius: 6px; padding: 6px 8px; font-size: 0.95rem;
 }
 
-.perf-card {
+.top-row { display: flex; gap: 10px; margin-bottom: 10px; }
+.top-row > .hero-card { flex: 1 1 0; min-width: 0; }
+.hero-card {
   text-align: center;
   background: #102944;
   border-radius: 16px;
-  padding: 24px 16px 20px;
-  margin-bottom: 16px;
+  padding: 20px 12px 16px;
+  display: flex; flex-direction: column; justify-content: center;
 }
-.perf-value { font-size: 4.5rem; font-weight: 700; line-height: 1; }
-.perf-label { color: #8fb0d1; margin-top: 4px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.hero-value { font-size: 2.7rem; font-weight: 700; line-height: 1; }
+.hero-label { color: #8fb0d1; margin-top: 6px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
 .perf-bar-track {
-  margin-top: 16px;
-  height: 10px;
+  margin-top: 12px;
+  height: 8px;
   border-radius: 6px;
   background: #1b3a5c;
   overflow: hidden;
@@ -137,19 +139,33 @@ input[type="time"] {
   transition: width 0.4s ease, background-color 0.4s ease;
 }
 
+.wide-card {
+  text-align: center;
+  background: #102944;
+  border-radius: 14px;
+  padding: 16px 12px;
+  margin-bottom: 10px;
+}
+.wide-value { font-size: 2.2rem; font-weight: 700; line-height: 1; }
+.wide-label { color: #8fb0d1; margin-top: 4px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
+.grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
 .tile {
   background: #102944;
   border-radius: 12px;
   padding: 12px 14px;
 }
+.tile-tappable { cursor: pointer; }
 .tile-label { color: #8fb0d1; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
 .tile-value { font-size: 1.6rem; font-weight: 600; margin-top: 2px; }
+.grid.cols-3 .tile-value { font-size: 1.3rem; }
+.tile-value.prompt { font-size: 0.9rem; font-weight: 600; color: #4aa3ff; }
 .tile-trend { font-size: 0.75rem; font-weight: 600; height: 0.9rem; line-height: 0.9rem; }
 .tile-trend.up { color: #3cc26e; }
 .tile-trend.down { color: #e74c3c; }
